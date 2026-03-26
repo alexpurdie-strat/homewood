@@ -135,7 +135,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .dot-row{display:flex;gap:6px;justify-content:center;margin-top:14px}
 .dot{width:7px;height:7px;border-radius:50%;background:var(--border)}
 .dot.on{background:var(--navy)}
-.dot.on.campus{background:var(--campus)}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
 .form-input{width:100%;border:1px solid var(--border);border-radius:8px;padding:10px 14px;font-size:12px;background:#fff;color:var(--text)}
 .form-input:focus{outline:none;border-color:var(--campus)}
@@ -169,6 +168,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .chk-item{display:flex;align-items:flex-start;gap:7px;font-size:12px;color:var(--muted);padding:7px 0;border-bottom:1px solid var(--border)}
 </style>
 
+<!-- SITE SWITCHER -->
 <div class="site-banner">
   <span class="site-label">Viewing:</span>
   <span class="site-btn active" id="btn-parent" onclick="switchSite('parent','p-home')">Homewood Living Ministries (Parent)</span>
@@ -179,9 +179,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 <div id="parent-header">
   <nav class="parent-nav">
     <div class="parent-logo" onclick="goTo('p-home')">
-      <div class="parent-logo-mark">
-        <svg viewBox="0 0 26 26" fill="none" width="22" height="22"><circle cx="13" cy="13" r="11" stroke="white" stroke-width="1.5"/><line x1="13" y1="2" x2="13" y2="24" stroke="white" stroke-width="1.5"/><line x1="2" y1="13" x2="24" y2="13" stroke="white" stroke-width="1.5"/><circle cx="13" cy="13" r="3" fill="white"/></svg>
-      </div>
+      <div class="parent-logo-mark"><svg viewBox="0 0 26 26" fill="none" width="22" height="22"><circle cx="13" cy="13" r="11" stroke="white" stroke-width="1.5"/><line x1="13" y1="2" x2="13" y2="24" stroke="white" stroke-width="1.5"/><line x1="2" y1="13" x2="24" y2="13" stroke="white" stroke-width="1.5"/><circle cx="13" cy="13" r="3" fill="white"/></svg></div>
       <div class="parent-logo-text"><span class="top">Homewood Living</span><br><span class="sub">Ministries</span></div>
     </div>
     <div class="nav-links">
@@ -190,13 +188,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
         <div class="dropdown wide" id="dd-p-loc">
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px">
             <div><div class="dd-col-label">PA Locations</div>
-              <div class="dd-link" onclick="switchSite('child','c-home');closeDD()">Martinsburg <span class="dd-arrow">→</span></div>
-              <div class="dd-link" onclick="switchSite('child','c-home');closeDD()">Spring House <span class="dd-arrow">→</span></div>
-              <div class="dd-link" onclick="switchSite('child','c-home');closeDD()">Plum Creek <span class="dd-arrow">→</span></div>
+              <div class="dd-link" onclick="goTo('p-location-preview');closeDD()">Martinsburg <span class="dd-arrow">→</span></div>
+              <div class="dd-link" onclick="goTo('p-location-preview');closeDD()">Spring House <span class="dd-arrow">→</span></div>
+              <div class="dd-link" onclick="goTo('p-location-preview');closeDD()">Plum Creek <span class="dd-arrow">→</span></div>
             </div>
             <div><div class="dd-col-label">MD Locations</div>
-              <div class="dd-link" onclick="switchSite('child','c-home');closeDD()">Williamsport <span class="dd-arrow">→</span></div>
-              <div class="dd-link" onclick="switchSite('child','c-home');closeDD()">Frederick <span class="dd-arrow">→</span></div>
+              <div class="dd-link" onclick="goTo('p-location-preview');closeDD()">Williamsport <span class="dd-arrow">→</span></div>
+              <div class="dd-link" onclick="goTo('p-location-preview');closeDD()">Frederick <span class="dd-arrow">→</span></div>
             </div>
           </div>
         </div>
@@ -207,13 +205,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 32px">
             <div>
               <div class="dd-link" onclick="goTo('p-our-story');closeDD()">Our Story <span class="dd-arrow">→</span></div>
-              <div class="dd-link" onclick="goTo('p-our-story');closeDD()">Our Ministry <span class="dd-arrow">→</span></div>
               <div class="dd-link" onclick="goTo('p-senior-living');closeDD()">Understanding Senior Living <span class="dd-arrow">→</span></div>
             </div>
             <div>
-              <div class="dd-link" onclick="goTo('p-news');closeDD()">News <span class="dd-arrow">→</span></div>
               <div class="dd-link" onclick="goTo('p-leadership');closeDD()">Leadership <span class="dd-arrow">→</span></div>
-              <div class="dd-link" onclick="closeDD()">Brand Store <span class="dd-arrow">→</span></div>
+              <div class="dd-link" onclick="goTo('p-news');closeDD()">News <span class="dd-arrow">→</span></div>
+              <div class="dd-link" onclick="goTo('p-contact');closeDD()">Contact Us <span class="dd-arrow">→</span></div>
             </div>
           </div>
         </div>
@@ -242,9 +239,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
   </div>
   <nav class="child-nav">
     <div class="child-logo" onclick="goTo('c-home')">
-      <div class="child-logo-mark">
-        <svg viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="19" stroke="#7a3050" stroke-width="2"/><line x1="22" y1="3" x2="22" y2="41" stroke="#7a3050" stroke-width="2"/><line x1="3" y1="22" x2="41" y2="22" stroke="#7a3050" stroke-width="2"/><line x1="8" y1="8" x2="36" y2="36" stroke="#7a3050" stroke-width="1.2"/><line x1="36" y1="8" x2="8" y2="36" stroke="#7a3050" stroke-width="1.2"/><circle cx="22" cy="22" r="4" fill="#7a3050"/></svg>
-      </div>
+      <div class="child-logo-mark"><svg viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="19" stroke="#7a3050" stroke-width="2"/><line x1="22" y1="3" x2="22" y2="41" stroke="#7a3050" stroke-width="2"/><line x1="3" y1="22" x2="41" y2="22" stroke="#7a3050" stroke-width="2"/><line x1="8" y1="8" x2="36" y2="36" stroke="#7a3050" stroke-width="1.2"/><line x1="36" y1="8" x2="8" y2="36" stroke="#7a3050" stroke-width="1.2"/><circle cx="22" cy="22" r="4" fill="#7a3050"/></svg></div>
       <div class="child-logo-text"><span class="top">Homewood Living</span><br><span class="sub">Plum Creek</span></div>
     </div>
     <div class="nav-links">
@@ -268,7 +263,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
   </nav>
 </div>
 
-<!-- P: HOME -->
+<!-- ═══════════════════════════════════════
+     PARENT PAGES
+═══════════════════════════════════════ -->
+
+<!-- P-HOME -->
 <div class="page active" id="page-p-home">
   <div style="background:var(--navy);color:#fff;padding:7px 40px;font-size:11px;display:flex;justify-content:space-between"><span>📍 Homewood Living Ministries — 5 Campus Communities</span><span style="cursor:pointer;opacity:.7">Contact Us →</span></div>
   <div class="hero-parent-full">
@@ -285,13 +284,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
     <div class="h2" style="text-align:center;margin-bottom:4px">Find the community that feels like home</div>
     <div class="body" style="text-align:center;margin:0 auto 24px">Each of our five campuses has its own character and story.</div>
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:14px">
-      <div class="card" style="cursor:pointer" onclick="switchSite('child','c-home')"><div class="h4">Martinsburg</div><div style="font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:6px">Martinsburg, PA</div><div class="body" style="font-size:11px;margin-bottom:8px">Central Pennsylvania farmland, full-spectrum care.</div><span class="lnk">View Location →</span></div>
-      <div class="card" style="cursor:pointer" onclick="switchSite('child','c-home')"><div class="h4">Spring House</div><div style="font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:6px">Everett, PA</div><div class="body" style="font-size:11px;margin-bottom:8px">Country living in bucolic Bedford County.</div><span class="lnk">View Location →</span></div>
-      <div class="card" style="cursor:pointer" onclick="switchSite('child','c-home')"><div class="h4">Plum Creek</div><div style="font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:6px">Hanover, PA</div><div class="body" style="font-size:11px;margin-bottom:8px">100-acre campus, villas, cottages, apartments, full care.</div><span class="lnk">View Location →</span></div>
+      <div class="card" style="cursor:pointer" onclick="goTo('p-location-preview')"><div class="h4">Martinsburg</div><div style="font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:6px">Martinsburg, PA</div><div class="body" style="font-size:11px;margin-bottom:8px">Central Pennsylvania farmland, full-spectrum care.</div><span class="lnk">View Location →</span></div>
+      <div class="card" style="cursor:pointer" onclick="goTo('p-location-preview')"><div class="h4">Spring House</div><div style="font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:6px">Everett, PA</div><div class="body" style="font-size:11px;margin-bottom:8px">Country living in bucolic Bedford County.</div><span class="lnk">View Location →</span></div>
+      <div class="card" style="cursor:pointer" onclick="goTo('p-location-preview')"><div class="h4">Plum Creek</div><div style="font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:6px">Hanover, PA</div><div class="body" style="font-size:11px;margin-bottom:8px">100-acre campus, villas, cottages, apartments, full care.</div><span class="lnk">View Location →</span></div>
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px">
-      <div class="card" style="cursor:pointer" onclick="switchSite('child','c-home')"><div class="h4">Williamsport</div><div style="font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:6px">Williamsport, MD</div><div class="body" style="font-size:11px;margin-bottom:8px">Our flagship — 28 acres serving the Hagerstown community since 1932.</div><span class="lnk">View Location →</span></div>
-      <div class="card" style="cursor:pointer" onclick="switchSite('child','c-home')"><div class="h4">Frederick</div><div style="font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:6px">Frederick, MD</div><div class="body" style="font-size:11px;margin-bottom:8px">Rolling farmland north of Frederick, opened 2000.</div><span class="lnk">View Location →</span></div>
+      <div class="card" style="cursor:pointer" onclick="goTo('p-location-preview')"><div class="h4">Williamsport</div><div style="font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:6px">Williamsport, MD</div><div class="body" style="font-size:11px;margin-bottom:8px">Our flagship — 28 acres serving the Hagerstown community since 1932.</div><span class="lnk">View Location →</span></div>
+      <div class="card" style="cursor:pointer" onclick="goTo('p-location-preview')"><div class="h4">Frederick</div><div style="font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:6px">Frederick, MD</div><div class="body" style="font-size:11px;margin-bottom:8px">Rolling farmland north of Frederick, opened 2000.</div><span class="lnk">View Location →</span></div>
       <div class="card" style="background:var(--navy);cursor:pointer;text-align:center;padding:24px" onclick="goTo('p-get-started')"><div style="font-size:13px;font-weight:600;color:#fff;margin-bottom:6px">Not sure which location is right for you?</div><div style="font-size:11px;color:rgba(255,255,255,.7);margin-bottom:12px">We'll help you find the right fit.</div><button class="btn-p" style="font-size:11px;padding:6px 16px;margin:0 auto;display:block">Get in Touch →</button></div>
     </div>
   </div></div>
@@ -300,13 +299,16 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
       <div><div class="descriptor">Who We Serve</div><div class="h2">We're here for you — wherever you are in the journey</div><div class="body" style="margin-bottom:16px">Whether you're planning ahead, facing a transition, or looking for a loved one — Homewood has the care, community, and compassion to meet you where you are.</div><button class="btn-p" onclick="goTo('p-senior-living')">Understanding Senior Living</button></div>
       <div class="split-3" style="gap:14px">
         <div class="card" style="text-align:center;padding:14px"><div style="font-size:20px;margin-bottom:5px">🏡</div><div class="h4">Residential Living</div><div class="body" style="font-size:11px">Independent living with community and support.</div></div>
-        <div class="card" style="text-align:center;padding:14px"><div style="font-size:20px;margin-bottom:5px">🤝</div><div class="h4">Assisted Living</div><div class="body" style="font-size:11px">Personal care with dignity and compassion.</div></div>
+        <div class="card" style="text-align:center;padding:14px"><div style="font-size:20px;margin-bottom:5px">🤝</div><div class="h4">Personal Care</div><div class="body" style="font-size:11px">Support with dignity and compassion.</div></div>
         <div class="card" style="text-align:center;padding:14px"><div style="font-size:20px;margin-bottom:5px">🩺</div><div class="h4">Skilled Nursing</div><div class="body" style="font-size:11px">Expert clinical care when it's needed most.</div></div>
       </div>
     </div>
   </div></div>
   <div class="section white"><div class="sw">
-    <div class="split"><div class="img-ph" style="height:280px">Mission image</div><div><div class="descriptor">Our Mission</div><div class="h2">Live with purpose, surrounded by support</div><div class="body" style="margin-bottom:14px">Homewood exists to honor Christ through faithful service to seniors and each other. Our four core values — Compassion, Integrity, Humility, and Gratitude — guide every decision we make.</div><span class="lnk" onclick="goTo('p-our-story')">Learn our story →</span></div></div>
+    <div class="split">
+      <div class="img-ph" style="height:280px">Mission image</div>
+      <div><div class="descriptor">Our Mission</div><div class="h2">Live with purpose, surrounded by support</div><div class="body" style="margin-bottom:14px">Homewood exists to honor Christ through faithful service to seniors and each other. Our four core values — Compassion, Integrity, Humility, and Gratitude — guide every decision we make.</div><span class="lnk" onclick="goTo('p-our-story')">Learn our story →</span></div>
+    </div>
   </div></div>
   <div class="section gray"><div class="sw">
     <div class="descriptor" style="text-align:center">Hear from our community</div>
@@ -346,64 +348,271 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
   </div></div>
 </div>
 
-<!-- P: OUR STORY -->
+<!-- P-OUR-STORY -->
 <div class="page" id="page-p-our-story">
   <div class="breadcrumb"><span onclick="goTo('p-home')" style="cursor:pointer">Home</span><span class="sep">›</span><span class="cur navy">Our Story</span></div>
-  <div class="hero-centered"><div class="hero-centered-inner"><div class="descriptor">About Homewood</div><div class="h1" style="text-align:center">Rooted in faith, driven by compassion</div><div class="body" style="text-align:center;margin:0 auto 18px">For more than 90 years, Homewood Living Ministries has honored Christ through faithful service to seniors.</div><button class="btn-p" onclick="goTo('p-contact')">Contact Us</button></div></div>
-  <div class="section white"><div class="sw"><div class="descriptor">Our Founding</div><div class="h2" style="margin-bottom:14px">Where we came from and where we are today</div><div class="split-2" style="gap:40px"><div class="body wide">Founded in 1932, Homewood began as a small faith-based community in Williamsport, MD. What started as a single location has grown into a network of five communities across Maryland and Pennsylvania.</div><div class="body wide">Today, Homewood serves hundreds of residents guided by the same foundational values that have carried the organization for over nine decades. Growth has always been measured by quality of care.</div></div></div></div>
-  <div class="section gray"><div class="sw"><div class="descriptor">Our Journey</div><div class="h2" style="margin-bottom:20px">A timeline of faithful service</div><div class="tl"><div class="tl-item"><div class="tl-dot"></div><div class="meta-tag">1932</div><div class="h4">Founding in Williamsport, MD</div><div class="body">First community established on 28 acres.</div></div><div class="tl-item"><div class="tl-dot"></div><div class="meta-tag">1960s–1980s</div><div class="h4">Expansion across Pennsylvania</div><div class="body">Martinsburg and Hanover campuses added.</div></div><div class="tl-item"><div class="tl-dot"></div><div class="meta-tag">2000</div><div class="h4">Frederick, MD campus opens</div></div><div class="tl-item" style="margin-bottom:0"><div class="tl-dot"></div><div class="meta-tag">Today</div><div class="h4">Five communities, one mission</div></div></div></div></div>
-  <div class="section white"><div class="sw"><div class="split"><div class="img-ph" style="height:220px">Mission image</div><div><div class="descriptor">Our Mission</div><div class="h2">Honoring Christ through faithful service</div><div class="body" style="margin-bottom:10px">Every decision we make flows from this single calling — providing Christ-centered communities where seniors thrive.</div><span class="lnk">Learn about our values →</span></div></div></div></div>
-  <div class="section gray"><div class="sw" style="text-align:center"><div class="descriptor">Our Values</div><div class="h2" style="margin-bottom:20px">The principles that guide everything we do</div><div class="split-4"><div class="card" style="text-align:center"><div style="font-size:22px;margin-bottom:7px">♡</div><div class="h4">Compassion</div><div class="body">Meeting each person with warmth and genuine care.</div></div><div class="card" style="text-align:center"><div style="font-size:22px;margin-bottom:7px">◇</div><div class="h4">Integrity</div><div class="body">Doing what is right, even when no one is watching.</div></div><div class="card" style="text-align:center"><div style="font-size:22px;margin-bottom:7px">○</div><div class="h4">Humility</div><div class="body">Serving with a posture of learning and openness.</div></div><div class="card" style="text-align:center"><div style="font-size:22px;margin-bottom:7px">✦</div><div class="h4">Gratitude</div><div class="body">Celebrating each day and each relationship.</div></div></div></div></div>
-  <div class="section white"><div class="sw"><div class="cta-band"><div class="h2" style="margin-bottom:7px">We're here to answer your questions</div><div class="body" style="text-align:center;margin:0 auto 18px">Whether exploring for yourself or a loved one, our team is ready.</div><button class="btn-p" onclick="goTo('p-contact')">Contact Us →</button></div></div></div>
+  <div class="hero-centered"><div class="hero-centered-inner">
+    <div class="descriptor">About Homewood</div>
+    <div class="h1" style="text-align:center">Rooted in faith, driven by compassion</div>
+    <div class="body" style="text-align:center;margin:0 auto 18px">For more than 90 years, Homewood Living Ministries has honored Christ through faithful service to seniors.</div>
+    <button class="btn-p" onclick="goTo('p-contact')">Contact Us</button>
+  </div></div>
+  <div class="section white"><div class="sw">
+    <div class="descriptor">Our Founding</div>
+    <div class="h2" style="margin-bottom:14px">Where we came from and where we are today</div>
+    <div class="split-2" style="gap:40px">
+      <div class="body wide">Founded in 1932, Homewood began as a small faith-based community in Williamsport, MD. What started as a single location has grown into a network of five communities across Maryland and Pennsylvania.</div>
+      <div class="body wide">Today, Homewood serves hundreds of residents guided by the same foundational values that have carried the organization for over nine decades. Growth has always been measured by quality of care.</div>
+    </div>
+  </div></div>
+  <div class="section gray"><div class="sw">
+    <div class="descriptor">Our Journey</div>
+    <div class="h2" style="margin-bottom:20px">A timeline of faithful service</div>
+    <div class="tl">
+      <div class="tl-item"><div class="tl-dot"></div><div class="meta-tag">1932</div><div class="h4">Founding in Williamsport, MD</div><div class="body">First community established on 28 acres.</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="meta-tag">1960s–1980s</div><div class="h4">Expansion across Pennsylvania</div><div class="body">Martinsburg and Hanover campuses added.</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="meta-tag">2000</div><div class="h4">Frederick, MD campus opens</div></div>
+      <div class="tl-item" style="margin-bottom:0"><div class="tl-dot"></div><div class="meta-tag">Today</div><div class="h4">Five communities, one mission</div></div>
+    </div>
+  </div></div>
+  <div class="section white"><div class="sw">
+    <div class="split" style="align-items:start;gap:56px">
+      <div class="img-ph" style="height:380px;min-width:0">Mission image</div>
+      <div>
+        <div class="descriptor">Our Mission &amp; Values</div>
+        <div class="h2">Honoring Christ through faithful service</div>
+        <div class="body wide" style="margin-bottom:20px">Every decision we make flows from this single calling — providing Christ-centered communities where seniors thrive with dignity, joy, and compassion. Four core values guide everything we do.</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <div class="card" style="padding:16px 18px"><div style="font-size:20px;margin-bottom:6px">♡</div><div class="h4">Compassion</div><div class="body" style="font-size:12px">Meeting each person with warmth and genuine care.</div></div>
+          <div class="card" style="padding:16px 18px"><div style="font-size:20px;margin-bottom:6px">◇</div><div class="h4">Integrity</div><div class="body" style="font-size:12px">Doing what is right, even when no one is watching.</div></div>
+          <div class="card" style="padding:16px 18px"><div style="font-size:20px;margin-bottom:6px">○</div><div class="h4">Humility</div><div class="body" style="font-size:12px">Serving with a posture of learning and openness.</div></div>
+          <div class="card" style="padding:16px 18px"><div style="font-size:20px;margin-bottom:6px">✦</div><div class="h4">Gratitude</div><div class="body" style="font-size:12px">Celebrating each day and each relationship.</div></div>
+        </div>
+      </div>
+    </div>
+  </div></div>
+  <div class="section gray"><div class="sw">
+    <div class="split">
+      <div class="img-ph" style="height:280px">Faith in action photo</div>
+      <div>
+        <div class="descriptor">Faith in Action</div>
+        <div class="h2">More than care — a ministry</div>
+        <div class="body wide" style="margin-bottom:12px">Homewood Living Ministries is rooted in the Christian faith, but our doors are open to everyone. Our ministry is lived out not through words alone, but through the way we treat every resident, family member, and employee — with dignity, grace, and genuine love.</div>
+        <div class="body wide" style="margin-bottom:12px">Chaplains serve on each of our campuses, offering spiritual care, pastoral support, and a consistent presence. Chapel services, Bible studies, and prayer groups are available to all who wish to participate.</div>
+        <div class="body wide">We believe that caring for seniors is a sacred calling. It is ministry in its truest form.</div>
+      </div>
+    </div>
+  </div></div>
+  <div class="section white"><div class="sw">
+    <div class="descriptor" style="text-align:center">Explore More</div>
+    <div class="h2" style="text-align:center;margin-bottom:20px">Continue your journey</div>
+    <div class="split-3">
+      <div class="cta-row" style="flex-direction:column;align-items:flex-start;gap:10px"><div><div class="h4">Understanding Senior Living</div><div class="body">Learn about the continuum of care and what each level means for you or your loved one.</div></div><span class="lnk" onclick="goTo('p-senior-living')">Explore options →</span></div>
+      <div class="cta-row" style="flex-direction:column;align-items:flex-start;gap:10px"><div><div class="h4">Meet Our Leadership</div><div class="body">Get to know the team guiding Homewood Living Ministries with conviction and mission.</div></div><span class="lnk" onclick="goTo('p-leadership')">Meet the team →</span></div>
+      <div class="cta-row" style="flex-direction:column;align-items:flex-start;gap:10px"><div><div class="h4">Homewood News</div><div class="body">Stay up to date with stories, newsletters, and updates from across our five communities.</div></div><span class="lnk" onclick="goTo('p-news')">Read the latest →</span></div>
+    </div>
+  </div></div>
+  <div class="section gray"><div class="sw"><div class="cta-band"><div class="h2" style="margin-bottom:7px">We're here to answer your questions</div><div class="body" style="text-align:center;margin:0 auto 18px">Whether exploring for yourself or a loved one, our team is ready.</div><button class="btn-p" onclick="goTo('p-contact')">Contact Us →</button></div></div></div>
 </div>
 
-<!-- P: SENIOR LIVING -->
+<!-- P-SENIOR-LIVING -->
 <div class="page" id="page-p-senior-living">
-  <div class="breadcrumb"><span onclick="goTo('p-home')" style="cursor:pointer">Home</span><span class="sep">›</span><span onclick="goTo('p-our-story')" style="cursor:pointer">About</span><span class="sep">›</span><span class="cur navy">Understanding Senior Living</span></div>
+  <div class="breadcrumb"><span onclick="goTo('p-home')" style="cursor:pointer">Home</span><span class="sep">›</span><span class="cur navy">Understanding Senior Living</span></div>
   <div class="hero-centered"><div class="hero-centered-inner"><div class="descriptor">Senior Living Options</div><div class="h1">Making sense of senior living</div><div class="body" style="text-align:center;margin:0 auto">The world of senior care can feel overwhelming. We're here to help you understand your options.</div></div></div>
   <div class="section white"><div class="sw"><div class="split"><div class="img-ph" style="height:220px">Life Plan image</div><div><div class="descriptor">Life Plan Communities</div><div class="h2">What is a Continuing Care Retirement Community?</div><div class="body" style="margin-bottom:10px">A Life Plan Community provides multiple levels of care — from independent living to skilled nursing — all in one place. You move through different levels of care without leaving the community you call home.</div></div></div></div></div>
-  <div class="section gray"><div class="sw" style="text-align:center"><div class="descriptor">Continuum of Care</div><div class="h2" style="margin-bottom:20px">Care that grows with you</div><div class="split-4"><div class="card" style="text-align:center"><div style="font-size:22px;margin-bottom:7px">🏡</div><div class="h4">Residential Living</div><div class="body">Independent living with full amenities and community.</div></div><div class="card" style="text-align:center"><div style="font-size:22px;margin-bottom:7px">🤝</div><div class="h4">Assisted Living</div><div class="body">Daily support with dignity and independence preserved.</div></div><div class="card" style="text-align:center"><div style="font-size:22px;margin-bottom:7px">🧠</div><div class="h4">Memory Care</div><div class="body">Specialized care for dementia and Alzheimer's.</div></div><div class="card" style="text-align:center"><div style="font-size:22px;margin-bottom:7px">🏥</div><div class="h4">Skilled Nursing</div><div class="body">24-hour clinical care for complex medical needs.</div></div></div></div></div>
+  <div class="section gray"><div class="sw" style="text-align:center"><div class="descriptor">Continuum of Care</div><div class="h2" style="margin-bottom:20px">Care that grows with you</div><div class="split-4"><div class="card" style="text-align:center"><div style="font-size:22px;margin-bottom:7px">🏡</div><div class="h4">Residential Living</div><div class="body">Independent living with full amenities and community.</div></div><div class="card" style="text-align:center"><div style="font-size:22px;margin-bottom:7px">🤝</div><div class="h4">Personal Care</div><div class="body">Daily support with dignity and independence preserved.</div></div><div class="card" style="text-align:center"><div style="font-size:22px;margin-bottom:7px">🧠</div><div class="h4">Memory Care</div><div class="body">Specialized care for dementia and Alzheimer's.</div></div><div class="card" style="text-align:center"><div style="font-size:22px;margin-bottom:7px">🏥</div><div class="h4">Skilled Nursing</div><div class="body">24-hour clinical care for complex medical needs.</div></div></div></div></div>
   <div class="section white"><div class="sw"><div class="descriptor">Common Questions</div><div class="h2" style="margin-bottom:18px">Frequently asked questions</div><div class="acc-item"><span class="acc-q">What is the difference between assisted living and skilled nursing?</span><div class="acc-chv teal">▾</div></div><div class="acc-open">Assisted living provides support for daily activities for those who need help but not 24/7 medical care. Skilled nursing provides around-the-clock clinical care.</div><div class="acc-item"><span class="acc-q">Can I move between levels of care on the same campus?</span><div class="acc-chv teal">▾</div></div><div class="acc-item"><span class="acc-q">What contract types does Homewood offer?</span><div class="acc-chv teal">▾</div></div><div class="acc-item"><span class="acc-q">How does the Foundation support residents?</span><div class="acc-chv teal">▾</div></div></div></div>
   <div class="section gray"><div class="sw" style="text-align:center"><div class="h2" style="margin-bottom:8px">Ready to explore a community?</div><button class="btn-p" onclick="goTo('p-get-started')" style="margin-right:8px">Explore Locations →</button><button class="btn-s" onclick="goTo('p-contact')">Talk to Our Team</button></div></div>
 </div>
 
-<!-- P: LEADERSHIP -->
+<!-- P-LEADERSHIP -->
 <div class="page" id="page-p-leadership">
-  <div class="breadcrumb"><span onclick="goTo('p-home')" style="cursor:pointer">Home</span><span class="sep">›</span><span onclick="goTo('p-our-story')" style="cursor:pointer">About</span><span class="sep">›</span><span class="cur navy">Leadership</span></div>
+  <div class="breadcrumb"><span onclick="goTo('p-home')" style="cursor:pointer">Home</span><span class="sep">›</span><span class="cur navy">Leadership</span></div>
   <div class="hero-centered"><div class="hero-centered-inner"><div class="descriptor">Our Team</div><div class="h1">Led by conviction, guided by mission</div></div></div>
   <div class="section white"><div class="sw"><div class="descriptor">Executive Team</div><div class="h2" style="margin-bottom:18px">Organizational leadership</div><div class="split-4"><div class="team-card"><div class="team-photo"></div><div class="h4">Name Here</div><div style="font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted)">President &amp; CEO</div></div><div class="team-card"><div class="team-photo"></div><div class="h4">Name Here</div><div style="font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted)">VP of Operations</div></div><div class="team-card"><div class="team-photo"></div><div class="h4">Name Here</div><div style="font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted)">CFO</div></div><div class="team-card"><div class="team-photo"></div><div class="h4">Name Here</div><div style="font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted)">VP of Foundation</div></div></div></div></div>
   <div class="section gray"><div class="sw"><div class="descriptor">Governance</div><div class="h2" style="margin-bottom:18px">Board of Directors</div><div class="split-3"><div class="card"><div class="h4">Board Member Name</div><div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.07em">Board Chair</div></div><div class="card"><div class="h4">Board Member Name</div><div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.07em">Vice Chair</div></div><div class="card"><div class="h4">Board Member Name</div><div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.07em">Secretary</div></div></div></div></div>
-  <div class="section white"><div class="sw" style="text-align:center"><div class="cta-band"><div class="h2" style="margin-bottom:7px">Want to connect?</div><button class="btn-p" onclick="goTo('p-contact')">Contact Us →</button></div></div></div>
+  <div class="section white"><div class="sw"><div class="cta-band"><div class="h2" style="margin-bottom:7px">Want to connect?</div><button class="btn-p" onclick="goTo('p-contact')">Contact Us →</button></div></div></div>
 </div>
 
-<!-- P: NEWS -->
+<!-- P-NEWS -->
 <div class="page" id="page-p-news">
   <div class="breadcrumb"><span onclick="goTo('p-home')" style="cursor:pointer">Home</span><span class="sep">›</span><span class="cur navy">News</span></div>
-  <div class="section gray"><div class="sw" style="text-align:center"><div class="descriptor">OUR BLOG</div><div class="h1" style="margin-bottom:16px">What's happening at Homewood</div><div class="filter-row" style="justify-content:center"><span class="pill active navy">All</span><span class="pill">News</span><span class="pill">Foundation</span><span class="pill">Events</span><span class="pill">Community</span></div></div></div>
+  <div class="section gray"><div class="sw" style="text-align:center"><div class="descriptor">Our Blog</div><div class="h1" style="margin-bottom:16px">What's happening at Homewood</div><div class="filter-row" style="justify-content:center"><span class="pill active navy">All</span><span class="pill">News</span><span class="pill">Foundation</span><span class="pill">Events</span><span class="pill">Community</span></div></div></div>
   <div class="section white"><div class="sw"><div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:20px"><div onclick="goTo('p-news-single')" style="cursor:pointer"><div class="card-img">Photo</div><div class="meta-tag">News · Feb 2026</div><div class="h4" style="margin-bottom:5px">Fireside Vol. 85, No. 4</div><span class="lnk">Read →</span></div><div onclick="goTo('p-news-single')" style="cursor:pointer"><div class="card-img">Photo</div><div class="meta-tag">Foundation · Oct 2025</div><div class="h4" style="margin-bottom:5px">Fall Foundation Newsletter</div><span class="lnk">Read →</span></div><div onclick="goTo('p-news-single')" style="cursor:pointer"><div class="card-img">Photo</div><div class="meta-tag">News · Sep 2025</div><div class="h4" style="margin-bottom:5px">Summer Newsletter</div><span class="lnk">Read →</span></div><div onclick="goTo('p-news-single')" style="cursor:pointer"><div class="card-img">Photo</div><div class="meta-tag">Events · 2025</div><div class="h4" style="margin-bottom:5px">Golf Tournament Recap</div><span class="lnk">Read →</span></div></div></div></div>
 </div>
 
-<!-- P: NEWS SINGLE -->
+<!-- P-NEWS-SINGLE -->
 <div class="page" id="page-p-news-single">
   <div class="breadcrumb"><span onclick="goTo('p-home')" style="cursor:pointer">Home</span><span class="sep">›</span><span onclick="goTo('p-news')" style="cursor:pointer">News</span><span class="sep">›</span><span class="cur navy">Fireside Vol. 85</span></div>
   <div style="display:grid;grid-template-columns:1fr 300px;min-height:500px;max-width:1600px;margin:0 auto">
-    <div style="padding:48px 48px 48px 72px;border-right:1px solid var(--border)"><div class="meta-tag">News · Feb 2026</div><div class="h1" style="margin-bottom:10px">Fireside Vol. 85, No. 4 — New Issue</div><div class="img-ph" style="height:260px;margin-bottom:20px">Article image</div><div class="body wide" style="margin-bottom:12px">Homewood Living Ministries is pleased to share the newest issue of The Fireside, our quarterly magazine celebrating the stories of faith, connection, and care that define who we are.</div></div>
+    <div style="padding:48px 48px 48px 72px;border-right:1px solid var(--border)"><div class="meta-tag">News · Feb 2026</div><div class="h1" style="margin-bottom:10px">Fireside Vol. 85, No. 4 — New Issue</div><div class="img-ph" style="height:260px;margin-bottom:20px">Article image</div><div class="body wide">Homewood Living Ministries is pleased to share the newest issue of The Fireside, our quarterly magazine celebrating the stories of faith, connection, and care that define who we are.</div></div>
     <div style="padding:32px 24px;background:var(--light)"><div style="font-size:11px;font-weight:600;color:var(--navy);margin-bottom:10px">Continue Reading</div><div class="list-item" onclick="goTo('p-news-single')" style="cursor:pointer"><div><div class="meta-tag">Foundation</div><div style="font-size:11px;font-weight:500">Fall Newsletter</div></div><span class="lnk">→</span></div><div class="list-item" onclick="goTo('p-news-single')" style="cursor:pointer"><div><div class="meta-tag">Events</div><div style="font-size:11px;font-weight:500">Golf Tournament</div></div><span class="lnk">→</span></div><div style="margin-top:12px"><span class="lnk" onclick="goTo('p-news')">View all →</span></div></div>
   </div>
   <div class="section gray"><div class="sw" style="text-align:center"><div class="cta-band"><div class="h2" style="margin-bottom:7px">Interested in learning more?</div><button class="btn-p" onclick="goTo('p-get-started')">Get Started →</button></div></div></div>
 </div>
 
-<!-- P: FOUNDATION -->
+<!-- P-FOUNDATION -->
 <div class="page" id="page-p-foundation">
   <div class="breadcrumb"><span onclick="goTo('p-home')" style="cursor:pointer">Home</span><span class="sep">›</span><span class="cur navy">The Foundation</span></div>
+
+  <!-- 1. Hero -->
   <div class="hero-split" style="max-width:1600px;margin:0 auto"><div class="hero-copy"><div class="descriptor">Homewood Foundation</div><div class="h1">Giving that changes lives</div><div class="body" style="margin-bottom:18px">Your generosity directly supports residents, programs, and communities that define Homewood Living Ministries.</div><div><button class="btn-p" style="margin-right:8px">Make a Gift Today</button><button class="btn-s">How to Give</button></div></div><div class="hero-img-ph" style="background:#c9cdd8;min-height:360px">Foundation hero</div></div>
+
+  <!-- 2. Impact Stats -->
   <div class="section gray"><div class="sw" style="text-align:center"><div class="stat-grid"><div><div class="stat-n">$XXM</div><div class="stat-l">Raised to date</div></div><div><div class="stat-n">XXX</div><div class="stat-l">Families supported</div></div><div><div class="stat-n">XX%</div><div class="stat-l">Residents assisted</div></div></div></div></div>
+
+  <!-- 3. Focus Areas -->
   <div class="section white"><div class="sw" style="text-align:center"><div class="descriptor">Where Your Gift Goes</div><div class="h2" style="margin-bottom:20px">Three focus areas</div><div class="split-3"><div class="card" style="text-align:center"><div style="font-size:22px;margin-bottom:7px">♡</div><div class="h4">Resident Care Fund</div><div class="body">Supporting residents who outlive their financial resources.</div></div><div class="card" style="text-align:center"><div style="font-size:22px;margin-bottom:7px">◎</div><div class="h4">Staff Development</div><div class="body">Investing in the education and growth of our caregivers.</div></div><div class="card" style="text-align:center"><div style="font-size:22px;margin-bottom:7px">⬡</div><div class="h4">Campus Improvements</div><div class="body">Enhancing the spaces where residents live and thrive.</div></div></div></div></div>
+
+  <!-- 4. Impact Story -->
   <div class="section gray"><div class="sw"><div class="split"><div><div class="descriptor">Impact Story</div><div class="h2">One story among hundreds</div><div class="body" style="margin-bottom:10px">When Margaret's savings ran out after a decade at Homewood, the Foundation's Resident Care Fund ensured she never had to leave the community she called home.</div><span class="lnk">Read more →</span></div><div class="img-ph" style="height:220px">Impact photo</div></div></div></div>
+
+  <!-- 5. FAQs -->
+  <div class="section white"><div class="sw">
+    <div class="descriptor">Foundation FAQs</div>
+    <div class="h2" style="margin-bottom:18px">Common questions about giving</div>
+    <div class="acc-item"><span class="acc-q">How is my gift used?</span><div class="acc-chv teal">▾</div></div>
+    <div class="acc-open">Gifts to the Homewood Foundation are directed to one of three focus areas — the Resident Care Fund, staff development, or campus improvements — based on your designation. Unrestricted gifts go where the need is greatest.</div>
+    <div class="acc-item"><span class="acc-q">Is my donation tax-deductible?</span><div class="acc-chv teal">▾</div></div>
+    <div class="acc-open">Yes. Homewood Living Ministries is a 501(c)(3) nonprofit organization. All donations are tax-deductible to the extent allowed by law. You will receive a gift acknowledgment for your records.</div>
+    <div class="acc-item"><span class="acc-q">What is the Resident Care Fund?</span><div class="acc-chv teal">▾</div></div>
+    <div class="acc-open">The Resident Care Fund provides financial assistance to residents who have outlived their financial resources. It ensures that no one has to leave the Homewood community they call home simply because of financial hardship.</div>
+    <div class="acc-item"><span class="acc-q">Can I give in memory or honor of someone?</span><div class="acc-chv teal">▾</div></div>
+    <div class="acc-item"><span class="acc-q">How do I make a planned gift?</span><div class="acc-chv teal">▾</div></div>
+    <!-- FAQ expanded link -->
+    <div style="margin-top:20px;padding-top:4px">
+      <span class="lnk" onclick="goTo('p-foundation-faqs')" style="font-size:13px">View all Foundation FAQs →</span>
+    </div>
+  </div></div>
+
+  <!-- 6. Events (moved up from bottom) -->
+  <div class="section gray"><div class="sw">
+    <div class="descriptor">Upcoming Events</div>
+    <div class="h2" style="margin-bottom:20px">Foundation events &amp; opportunities</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+      <div class="card" style="background:var(--navy);color:#fff;padding:32px;grid-row:span 2">
+        <div style="font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.5);margin-bottom:12px">Featured Event · Annual</div>
+        <div style="font-size:24px;font-weight:700;color:#fff;margin-bottom:8px;line-height:1.2">Golf Tournament</div>
+        <div style="font-size:13px;color:rgba(255,255,255,.75);line-height:1.7;margin-bottom:20px">Our signature fundraising event bringing together supporters from across the region. A day of golf, fellowship, and meaningful giving — all in support of the residents we serve.</div>
+        <div style="background:rgba(255,255,255,.1);border-radius:8px;padding:14px 16px;margin-bottom:20px">
+          <div style="font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.5);margin-bottom:4px">Date</div>
+          <div style="font-size:13px;font-weight:500;color:#fff">Summer 2026 — Date TBA</div>
+        </div>
+        <button class="btn-p" style="background:#fff;color:var(--navy);border:none">Learn More →</button>
+      </div>
+      <div class="card">
+        <div class="meta-tag" style="margin-bottom:6px">Annual Event</div>
+        <div class="h4">Foundation Gala</div>
+        <div class="body" style="margin-bottom:10px">An evening of celebration honoring generous donors and the residents whose lives they've touched.</div>
+        <span class="lnk">Learn more →</span>
+      </div>
+      <div class="card">
+        <div class="meta-tag" style="margin-bottom:6px">Ongoing</div>
+        <div class="h4">Planned Giving Conversations</div>
+        <div class="body" style="margin-bottom:10px">Leave a legacy through your estate. Our team is available to walk you through planned giving options at any time.</div>
+        <span class="lnk">Get in touch →</span>
+      </div>
+    </div>
+  </div></div>
+
+  <!-- 7. CTA -->
   <div class="section white"><div class="sw"><div class="split-2"><div class="card" style="text-align:center;padding:24px"><div class="h3" style="margin-bottom:6px">Make a gift today</div><div class="body" style="text-align:center;margin:0 auto 14px">Your gift goes directly to work in our communities.</div><button class="btn-p" style="margin:0 auto;display:block">Make a Gift →</button></div><div class="card" style="text-align:center;padding:24px"><div class="h3" style="margin-bottom:6px">Ways to give</div><div class="body" style="text-align:center;margin:0 auto 14px">From cash gifts to planned giving, find the right option.</div><button class="btn-s" style="margin:0 auto;display:block">How to Give →</button></div></div></div></div>
+
+  <!-- 8. Resources -->
+  <div class="section gray"><div class="sw">
+    <div class="descriptor">Foundation Resources</div>
+    <div class="h2" style="margin-bottom:20px">Learn more about the Foundation</div>
+    <div class="split-3">
+      <div class="cta-row" style="flex-direction:column;align-items:flex-start;gap:10px"><div><div class="h4">Foundation Newsletter</div><div class="body">Read the latest updates from the Foundation, including impact stories, upcoming events, and giving opportunities.</div></div><span class="lnk">Read the latest →</span></div>
+      <div class="cta-row" style="flex-direction:column;align-items:flex-start;gap:10px"><div><div class="h4">Annual Report</div><div class="body">See how your generosity made a difference last year — financial summaries, program highlights, and resident stories.</div></div><span class="lnk">View report →</span></div>
+      <div class="cta-row" style="flex-direction:column;align-items:flex-start;gap:10px"><div><div class="h4">Contact the Foundation</div><div class="body">Have questions about giving? Our Foundation team is here to help you find the right way to make an impact.</div></div><span class="lnk" onclick="goTo('p-contact')">Get in touch →</span></div>
+    </div>
+  </div></div>
 </div>
 
-<!-- P: CAREERS -->
+<!-- P-FOUNDATION-FAQS (expanded FAQs page) -->
+<div class="page" id="page-p-foundation-faqs">
+  <div class="breadcrumb"><span onclick="goTo('p-home')" style="cursor:pointer">Home</span><span class="sep">›</span><span onclick="goTo('p-foundation')" style="cursor:pointer">The Foundation</span><span class="sep">›</span><span class="cur navy">Foundation FAQs</span></div>
+  <div class="hero-centered"><div class="hero-centered-inner">
+    <div class="descriptor">Homewood Foundation</div>
+    <div class="h1">Foundation FAQs</div>
+    <div class="body" style="text-align:center;margin:0 auto">Everything you want to know about giving to the Homewood Foundation.</div>
+  </div></div>
+
+  <div class="section white"><div class="sw">
+    <div class="descriptor">About Your Gift</div>
+    <div class="h2" style="margin-bottom:18px">How giving works</div>
+
+    <div class="acc-item"><span class="acc-q">How is my gift used?</span><div class="acc-chv teal">▾</div></div>
+    <div class="acc-open">Gifts to the Homewood Foundation are directed to one of three focus areas — the Resident Care Fund, staff development, or campus improvements — based on your designation. Unrestricted gifts go where the need is greatest.</div>
+
+    <div class="acc-item"><span class="acc-q">Is my donation tax-deductible?</span><div class="acc-chv teal">▾</div></div>
+    <div class="acc-open">Yes. Homewood Living Ministries is a 501(c)(3) nonprofit organization. All donations are tax-deductible to the extent allowed by law. You will receive a written gift acknowledgment for your records.</div>
+
+    <div class="acc-item"><span class="acc-q">What is the Resident Care Fund?</span><div class="acc-chv teal">▾</div></div>
+    <div class="acc-open">The Resident Care Fund provides financial assistance to residents who have outlived their financial resources. It ensures that no one has to leave the Homewood community they call home simply because of financial hardship.</div>
+
+    <div class="acc-item"><span class="acc-q">Can I restrict my gift to a specific campus or program?</span><div class="acc-chv teal">▾</div></div>
+    <div class="acc-open">Yes. You may designate your gift to a specific Homewood campus or program area. Please indicate your preference when submitting your gift, or contact our Foundation team to discuss options.</div>
+
+    <div class="acc-item"><span class="acc-q">Can I give in memory or honor of someone?</span><div class="acc-chv teal">▾</div></div>
+    <div class="acc-open">Yes. Tribute gifts — in memory or in honor of a loved one — are a meaningful way to celebrate a life or mark a special occasion. We'll notify the honoree or their family of your thoughtful gesture.</div>
+
+    <div class="acc-item"><span class="acc-q">What is the minimum gift amount?</span><div class="acc-chv teal">▾</div></div>
+    <div class="acc-open">There is no minimum gift amount. Every contribution, regardless of size, makes a difference in the lives of our residents and their families.</div>
+  </div></div>
+
+  <div class="section gray"><div class="sw">
+    <div class="descriptor">Ways to Give</div>
+    <div class="h2" style="margin-bottom:18px">Giving options</div>
+
+    <div class="acc-item"><span class="acc-q">What are my options for making a gift?</span><div class="acc-chv teal">▾</div></div>
+    <div class="acc-open">You can give online, by mail, by phone, or in person. We accept cash, check, credit card, and many types of non-cash assets including securities and real estate. Contact our Foundation team to discuss the option that works best for you.</div>
+
+    <div class="acc-item"><span class="acc-q">Can I make a recurring gift?</span><div class="acc-chv teal">▾</div></div>
+    <div class="acc-open">Yes. Setting up a monthly or annual recurring gift is one of the most impactful ways to support the Foundation. You can establish a recurring gift online or by contacting our team directly.</div>
+
+    <div class="acc-item"><span class="acc-q">Can I donate appreciated stock or securities?</span><div class="acc-chv teal">▾</div></div>
+    <div class="acc-open">Yes. Gifts of appreciated securities — stocks, bonds, or mutual funds — may provide significant tax advantages compared to selling assets and donating the proceeds. Please contact our Foundation office to initiate a securities transfer.</div>
+
+    <div class="acc-item"><span class="acc-q">How do I make a planned gift?</span><div class="acc-chv teal">▾</div></div>
+    <div class="acc-open">A planned gift — such as a bequest in your will, a charitable remainder trust, or a beneficiary designation — allows you to leave a lasting legacy for future residents. Our Foundation team is available to walk you through options at any time, with no obligation.</div>
+
+    <div class="acc-item"><span class="acc-q">Does my employer offer matching gifts?</span><div class="acc-chv teal">▾</div></div>
+    <div class="acc-open">Many employers match charitable gifts made by their employees, potentially doubling or tripling the impact of your contribution. Check with your HR department to find out if your company participates in a matching gift program.</div>
+  </div></div>
+
+  <div class="section white"><div class="sw">
+    <div class="descriptor">Stewardship &amp; Recognition</div>
+    <div class="h2" style="margin-bottom:18px">What to expect after you give</div>
+
+    <div class="acc-item"><span class="acc-q">Will I receive a receipt for my gift?</span><div class="acc-chv teal">▾</div></div>
+    <div class="acc-open">Yes. All donors receive a written gift acknowledgment within a few weeks of their donation. Please retain this letter for tax purposes.</div>
+
+    <div class="acc-item"><span class="acc-q">How will I hear about the impact of my gift?</span><div class="acc-chv teal">▾</div></div>
+    <div class="acc-open">Foundation donors receive our annual newsletter, which includes impact stories, program updates, and financial highlights. You may also be invited to special donor events throughout the year.</div>
+
+    <div class="acc-item"><span class="acc-q">Is my giving information kept private?</span><div class="acc-chv teal">▾</div></div>
+    <div class="acc-open">Yes. Homewood respects the privacy of all donors. Your personal information and giving history will never be sold or shared with outside organizations without your consent.</div>
+  </div></div>
+
+  <div class="section gray"><div class="sw">
+    <div class="split-2">
+      <div class="card" style="text-align:center;padding:24px">
+        <div class="h3" style="margin-bottom:6px">Ready to make a gift?</div>
+        <div class="body" style="text-align:center;margin:0 auto 14px">Every gift — large or small — directly supports the residents and communities of Homewood.</div>
+        <button class="btn-p" style="margin:0 auto;display:block">Make a Gift →</button>
+      </div>
+      <div class="card" style="text-align:center;padding:24px">
+        <div class="h3" style="margin-bottom:6px">Still have questions?</div>
+        <div class="body" style="text-align:center;margin:0 auto 14px">Our Foundation team is happy to help. Reach out and we'll be in touch.</div>
+        <button class="btn-s" style="margin:0 auto;display:block" onclick="goTo('p-contact')">Contact the Foundation →</button>
+      </div>
+    </div>
+  </div></div>
+</div>
+
+<!-- P-CAREERS -->
 <div class="page" id="page-p-careers">
   <div class="breadcrumb"><span onclick="goTo('p-home')" style="cursor:pointer">Home</span><span class="sep">›</span><span class="cur navy">Careers</span></div>
   <div class="hero-split" style="max-width:1600px;margin:0 auto"><div class="hero-copy"><div class="descriptor">Join Our Team</div><div class="h1">More than a job — a calling</div><div class="body" style="margin-bottom:18px">At Homewood, work is ministry. Join a team who shows up every day to care for seniors with faith, skill, and genuine compassion.</div><div><button class="btn-p" style="margin-right:8px">View Openings</button><button class="btn-s">Our Culture</button></div></div><div class="hero-img-ph" style="min-height:360px;background:#c9cdd8">Careers hero</div></div>
@@ -411,14 +620,14 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
   <div class="section gray"><div class="sw" style="text-align:center"><div class="cta-band"><div class="h2" style="margin-bottom:7px">Ready to find your calling?</div><div class="body" style="text-align:center;margin:0 auto 18px">Browse open positions across all five campuses.</div><button class="btn-p">View Current Openings →</button></div></div></div>
 </div>
 
-<!-- P: CONTACT -->
+<!-- P-CONTACT -->
 <div class="page" id="page-p-contact">
   <div class="breadcrumb"><span onclick="goTo('p-home')" style="cursor:pointer">Home</span><span class="sep">›</span><span class="cur navy">Contact</span></div>
   <div class="hero-centered"><div class="hero-centered-inner"><div class="descriptor">Get in Touch</div><div class="h1">We're here to help</div></div></div>
-  <div class="section white"><div class="sw"><div class="split"><div><div class="h3" style="margin-bottom:14px">Contact information</div><div class="list-item"><div><div class="meta-tag">Call</div><div style="font-size:13px;font-weight:500">(301) 582-1626</div></div></div><div class="list-item"><div><div class="meta-tag">Email</div><div style="font-size:13px;font-weight:500">info@hmwd.org</div></div></div><div class="list-item" style="border:none"><div><div class="meta-tag">Visit</div><div style="font-size:13px;font-weight:500">16107 Elliott Pkwy · Williamsport, MD 21795</div></div></div></div><div><div class="h3" style="margin-bottom:14px">Send us a message</div><div class="form-row"><div><label class="form-label">First Name</label><input class="form-input" placeholder="First name"></div><div><label class="form-label">Last Name</label><input class="form-input" placeholder="Last name"></div></div><div style="margin-bottom:12px"><label class="form-label">Email</label><input class="form-input" placeholder="your@email.com" style="width:100%"></div><div style="margin-bottom:12px"><label class="form-label">I'm inquiring about</label><select class="form-select"><option>Residential Living</option><option>Assisted Living</option><option>The Foundation</option><option>Careers</option><option>Other</option></select></div><div style="margin-bottom:16px"><label class="form-label">Message</label><textarea class="form-textarea" placeholder="How can we help?"></textarea></div><button class="btn-p">Send Message →</button></div></div></div></div>
+  <div class="section white"><div class="sw"><div class="split"><div><div class="h3" style="margin-bottom:14px">Contact information</div><div class="list-item"><div><div class="meta-tag">Call</div><div style="font-size:13px;font-weight:500">(301) 582-1626</div></div></div><div class="list-item"><div><div class="meta-tag">Email</div><div style="font-size:13px;font-weight:500">info@hmwd.org</div></div></div><div class="list-item" style="border:none"><div><div class="meta-tag">Visit</div><div style="font-size:13px;font-weight:500">16107 Elliott Pkwy · Williamsport, MD 21795</div></div></div></div><div><div class="h3" style="margin-bottom:14px">Send us a message</div><div class="form-row"><div><label class="form-label">First Name</label><input class="form-input" placeholder="First name"></div><div><label class="form-label">Last Name</label><input class="form-input" placeholder="Last name"></div></div><div style="margin-bottom:12px"><label class="form-label">Email</label><input class="form-input" placeholder="your@email.com" style="width:100%"></div><div style="margin-bottom:12px"><label class="form-label">I'm inquiring about</label><select class="form-select"><option>Residential Living</option><option>Personal Care</option><option>The Foundation</option><option>Careers</option><option>Other</option></select></div><div style="margin-bottom:16px"><label class="form-label">Message</label><textarea class="form-textarea" placeholder="How can we help?"></textarea></div><button class="btn-p">Send Message →</button></div></div></div></div>
 </div>
 
-<!-- P: GET STARTED -->
+<!-- P-GET-STARTED -->
 <div class="page" id="page-p-get-started">
   <div style="background:rgba(26,39,68,.5);min-height:calc(100vh - 96px);display:flex;align-items:flex-start;justify-content:center;padding:60px 20px">
     <div style="background:#f8f8f6;border-radius:16px;padding:36px;width:100%;max-width:800px;position:relative">
@@ -427,18 +636,85 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
       <div class="h2" style="margin-bottom:5px">Which community would you like to explore?</div>
       <div class="body" style="margin-bottom:18px">Choose a location to begin your journey.</div>
       <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px">
-        <div style="background:#fff;border:1px solid var(--border);border-radius:10px;padding:16px;cursor:pointer" onclick="switchSite('child','c-home')"><div style="font-size:13px;font-weight:600;color:var(--navy)">Martinsburg</div><div style="font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:8px">Martinsburg, PA</div><span class="lnk">View Location →</span></div>
-        <div style="background:#fff;border:1px solid var(--border);border-radius:10px;padding:16px;cursor:pointer" onclick="switchSite('child','c-home')"><div style="font-size:13px;font-weight:600;color:var(--navy)">Spring House</div><div style="font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:8px">Everett, PA</div><span class="lnk">View Location →</span></div>
-        <div style="background:#fff;border:1px solid var(--border);border-radius:10px;padding:16px;cursor:pointer" onclick="switchSite('child','c-home')"><div style="font-size:13px;font-weight:600;color:var(--navy)">Plum Creek</div><div style="font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:8px">Hanover, PA</div><span class="lnk">View Location →</span></div>
-        <div style="background:#fff;border:1px solid var(--border);border-radius:10px;padding:16px;cursor:pointer" onclick="switchSite('child','c-home')"><div style="font-size:13px;font-weight:600;color:var(--navy)">Frederick</div><div style="font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:8px">Frederick, MD</div><span class="lnk">View Location →</span></div>
-        <div style="background:#fff;border:1px solid var(--border);border-radius:10px;padding:16px;cursor:pointer" onclick="switchSite('child','c-home')"><div style="font-size:13px;font-weight:600;color:var(--navy)">Williamsport</div><div style="font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:8px">Williamsport, MD</div><span class="lnk">View Location →</span></div>
+        <div style="background:#fff;border:1px solid var(--border);border-radius:10px;padding:16px;cursor:pointer" onclick="goTo('p-location-preview')"><div style="font-size:13px;font-weight:600;color:var(--navy)">Martinsburg</div><div style="font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:8px">Martinsburg, PA</div><span class="lnk">View Location →</span></div>
+        <div style="background:#fff;border:1px solid var(--border);border-radius:10px;padding:16px;cursor:pointer" onclick="goTo('p-location-preview')"><div style="font-size:13px;font-weight:600;color:var(--navy)">Spring House</div><div style="font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:8px">Everett, PA</div><span class="lnk">View Location →</span></div>
+        <div style="background:#fff;border:1px solid var(--border);border-radius:10px;padding:16px;cursor:pointer" onclick="goTo('p-location-preview')"><div style="font-size:13px;font-weight:600;color:var(--navy)">Plum Creek</div><div style="font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:8px">Hanover, PA</div><span class="lnk">View Location →</span></div>
+        <div style="background:#fff;border:1px solid var(--border);border-radius:10px;padding:16px;cursor:pointer" onclick="goTo('p-location-preview')"><div style="font-size:13px;font-weight:600;color:var(--navy)">Frederick</div><div style="font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:8px">Frederick, MD</div><span class="lnk">View Location →</span></div>
+        <div style="background:#fff;border:1px solid var(--border);border-radius:10px;padding:16px;cursor:pointer" onclick="goTo('p-location-preview')"><div style="font-size:13px;font-weight:600;color:var(--navy)">Williamsport</div><div style="font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:8px">Williamsport, MD</div><span class="lnk">View Location →</span></div>
         <div style="background:var(--navy);border-radius:10px;padding:16px;cursor:pointer" onclick="goTo('p-contact')"><div style="font-size:13px;font-weight:600;color:#fff;margin-bottom:5px">Not sure which is right for you?</div><div style="font-size:11px;color:rgba(255,255,255,.7);margin-bottom:10px">We'll help you find the right fit.</div><button class="btn-p" style="font-size:11px;padding:5px 14px;margin:0">Get in Touch →</button></div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- C: HOME -->
+<!-- P-LOCATION-PREVIEW -->
+<div class="page" id="page-p-location-preview">
+  <div class="breadcrumb"><span onclick="goTo('p-home')" style="cursor:pointer">Home</span><span class="sep">›</span><span class="cur navy">Plum Creek</span></div>
+  <div class="section white"><div class="sw">
+    <div class="split">
+      <div>
+        <div class="descriptor">Homewood Living</div>
+        <div class="h1">Plum Creek</div>
+        <div class="body wide" style="font-size:15px;margin-bottom:16px;color:var(--text)">A vibrant continuing care retirement community on 100 beautifully developed acres in Hanover, PA.</div>
+        <div class="list-item"><div><div class="meta-tag">Address</div><div style="font-size:13px;font-weight:500">1880 Westminster Ave, Hanover, PA 17331</div></div></div>
+        <div class="list-item"><div><div class="meta-tag">Phone</div><div style="font-size:13px;font-weight:500">(717) 637-4166</div></div></div>
+        <div class="list-item" style="border:none"><div><div class="meta-tag">Website</div><div style="font-size:13px;font-weight:500">homewoodlivingplumcreek.com</div></div></div>
+        <div style="margin-top:20px;display:flex;gap:10px">
+          <button class="btn-solid-nav" onclick="switchSite('child','c-home')">Visit Full Website →</button>
+          <button class="btn-outline-nav" onclick="switchSite('child','c-get-started')">Schedule a Tour</button>
+        </div>
+      </div>
+      <div class="img-ph" style="height:320px">Campus photo</div>
+    </div>
+  </div></div>
+  <div class="section gray"><div class="sw">
+    <div class="descriptor">About This Campus</div>
+    <div class="h2" style="margin-bottom:12px">Purpose-filled, joyful living in Hanover, PA</div>
+    <div class="split-2" style="gap:40px">
+      <div class="body wide">Homewood Living Plum Creek has a strong and deep-rooted Christian tradition of service and excellence. Situated on over 100 beautifully developed acres, our campus offers everything you need to thrive in retirement — all in one place.</div>
+      <div class="body wide">Close to shopping, dining, Sight &amp; Sound Theatre, kayaking, state parks, and easy highway access. Big enough to offer everything. Small enough to feel like home.</div>
+    </div>
+  </div></div>
+  <div class="section white"><div class="sw" style="text-align:center">
+    <div class="descriptor" style="margin-bottom:16px">Quick Stats</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;text-align:center;max-width:700px;margin:0 auto">
+      <div><div class="stat-n">1957</div><div class="stat-l">Established</div></div>
+      <div><div class="stat-n">100+</div><div class="stat-l">Acres</div></div>
+      <div><div class="stat-n">3</div><div class="stat-l">Care Levels</div></div>
+      <div><div class="stat-n" style="font-size:20px">Hanover, PA</div><div class="stat-l">Location</div></div>
+    </div>
+  </div></div>
+  <div class="section gray"><div class="sw">
+    <div class="descriptor">Services Offered</div>
+    <div class="h2" style="margin-bottom:20px">Care for every stage of life</div>
+    <div class="split-3">
+      <div class="card" style="cursor:pointer" onclick="switchSite('child','c-residential')"><div style="font-size:22px;margin-bottom:8px">🏡</div><div class="h4">Residential Living</div><div class="body" style="margin-bottom:10px">Maintenance-free retirement living — villas, cottages, and apartments.</div><span class="lnk">Learn more →</span></div>
+      <div class="card" style="cursor:pointer" onclick="switchSite('child','c-personal-care')"><div style="font-size:22px;margin-bottom:8px">🤝</div><div class="h4">Personal Care</div><div class="body" style="margin-bottom:10px">Licensed caregivers providing personalized support 24/7.</div><span class="lnk">Learn more →</span></div>
+      <div class="card" style="cursor:pointer" onclick="switchSite('child','c-healthcare')"><div style="font-size:22px;margin-bottom:8px">🏥</div><div class="h4">Healthcare</div><div class="body" style="margin-bottom:10px">Skilled nursing, memory care, short-term rehab, respite, and hospice.</div><span class="lnk">Learn more →</span></div>
+    </div>
+  </div></div>
+  <div class="section white" style="padding:0"><div style="max-width:1600px;margin:0 auto;padding:40px 72px 0"><div class="descriptor">Photo Gallery</div><div class="h2" style="margin-bottom:16px">Life at this campus</div></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr 1fr;gap:4px;height:220px"><div class="photo-cell" style="height:220px">Campus exterior</div><div class="photo-cell" style="height:220px">Dining room</div><div class="photo-cell" style="height:220px">Resident activities</div><div class="photo-cell" style="height:220px">Outdoor spaces</div><div class="photo-cell" style="height:220px">Villa interior</div></div></div>
+  <div class="section gray"><div class="sw" style="text-align:center">
+    <div class="descriptor" style="margin-bottom:16px">Hear from our residents</div>
+    <div class="testimonial"><div class="testimonial-quote">"Moving to Plum Creek was the best decision we ever made. The friendships, the activities, the care — everything is exactly what we hoped for in retirement."</div><div><span class="avatar"></span><strong style="font-size:12px">John &amp; Carol D.</strong><br><span style="font-size:10px;color:var(--muted)">Residents · Plum Creek</span></div></div>
+  </div></div>
+  <div class="section white"><div class="sw" style="text-align:center">
+    <div class="cta-band" style="background:var(--navy);color:#fff">
+      <div class="descriptor white" style="margin-bottom:6px">Ready to learn more?</div>
+      <div class="h2" style="color:#fff;margin-bottom:8px">Visit the full Plum Creek website</div>
+      <div class="body white" style="max-width:480px;margin:0 auto 20px">Explore residential living options, care services, campus amenities, upcoming events, and more.</div>
+      <button class="btn-p" style="background:#fff;color:var(--navy);border:none;margin-right:8px" onclick="switchSite('child','c-home')">Visit Full Website →</button>
+      <button class="btn-s" style="border-color:#fff;color:#fff" onclick="switchSite('child','c-get-started')">Schedule a Tour</button>
+    </div>
+  </div></div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     CHILD PAGES
+═══════════════════════════════════════ -->
+
+<!-- C-HOME -->
 <div class="page" id="page-c-home">
   <div class="hero-full" style="min-height:420px">
     <div class="hero-full-overlay"></div>
@@ -525,10 +801,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
   </div></div>
 </div>
 
-<!-- C: RESIDENTIAL -->
+<!-- C-RESIDENTIAL -->
 <div class="page" id="page-c-residential">
   <div class="breadcrumb"><span onclick="goTo('c-home')" style="cursor:pointer">Home</span><span class="sep">›</span><span class="cur">Residential Living</span></div>
-
   <div class="hero-centered"><div class="hero-centered-inner">
     <div class="descriptor campus">Residential Living</div>
     <div class="h1">Find Your Place at Plum Creek</div>
@@ -536,7 +811,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
     <button class="btn-campus" style="margin-right:8px" onclick="goTo('c-get-started')">Schedule a Visit</button>
     <button class="btn-campus-outline" onclick="goTo('c-get-started')">Request Information</button>
   </div></div>
-
   <div class="section white"><div class="sw">
     <div class="split">
       <div>
@@ -549,7 +823,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
       <div class="img-ph" style="height:320px">Residential lifestyle photo</div>
     </div>
   </div></div>
-
   <div class="section gray"><div class="sw">
     <div class="descriptor campus">What's Included</div>
     <div class="h2" style="margin-bottom:6px">Everything taken care of — so you don't have to</div>
@@ -567,29 +840,15 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
       <div class="chk-item"><span style="color:var(--campus);font-size:15px;margin-right:6px">✓</span> Optional in-home nursing assistance</div>
     </div>
   </div></div>
-
   <div class="section white"><div class="sw">
     <div class="descriptor campus">Lifestyle Highlights</div>
     <div class="h2" style="margin-bottom:20px">Live life on your terms</div>
     <div class="split-3">
-      <div class="card campus-tint" style="padding:24px">
-        <div style="font-size:24px;margin-bottom:8px">🏡</div>
-        <div class="h4" style="margin-bottom:6px">Independence</div>
-        <div class="body">Your home, your schedule, your way. Sit by the pond, take a walk, or join a club — the choice is always yours.</div>
-      </div>
-      <div class="card campus-tint" style="padding:24px">
-        <div style="font-size:24px;margin-bottom:8px">🤝</div>
-        <div class="h4" style="margin-bottom:6px">Community</div>
-        <div class="body">From the Joyful Singers to the Book Club to group trips to Sight &amp; Sound Theatre — neighbors quickly become lifelong friends.</div>
-      </div>
-      <div class="card campus-tint" style="padding:24px">
-        <div style="font-size:24px;margin-bottom:8px">💛</div>
-        <div class="h4" style="margin-bottom:6px">Support</div>
-        <div class="body">Priority access to our healthcare center means you'll always have the right level of care — without ever leaving the community you love.</div>
-      </div>
+      <div class="card campus-tint" style="padding:24px"><div style="font-size:24px;margin-bottom:8px">🏡</div><div class="h4" style="margin-bottom:6px">Independence</div><div class="body">Your home, your schedule, your way. Sit by the pond, take a walk, or join a club — the choice is always yours.</div></div>
+      <div class="card campus-tint" style="padding:24px"><div style="font-size:24px;margin-bottom:8px">🤝</div><div class="h4" style="margin-bottom:6px">Community</div><div class="body">From the Joyful Singers to the Book Club to group trips to Sight &amp; Sound Theatre — neighbors quickly become lifelong friends.</div></div>
+      <div class="card campus-tint" style="padding:24px"><div style="font-size:24px;margin-bottom:8px">💛</div><div class="h4" style="margin-bottom:6px">Support</div><div class="body">Priority access to our healthcare center means you'll always have the right level of care — without ever leaving the community you love.</div></div>
     </div>
   </div></div>
-
   <div class="section gray"><div class="sw">
     <div class="descriptor campus" style="text-align:center">Campus Amenities</div>
     <div class="h2" style="text-align:center;margin-bottom:6px">Everything you need to live well</div>
@@ -637,50 +896,20 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
       </div>
     </div>
   </div></div>
-
   <div class="section white"><div class="sw">
     <div class="descriptor campus" style="text-align:center">Available Residences</div>
     <div class="h2" style="text-align:center;margin-bottom:6px">Choose the home that's right for you</div>
     <div class="body" style="text-align:center;margin:0 auto 24px;max-width:520px">Three residence styles — each offering a different way to experience life at Plum Creek.</div>
     <div class="split-3">
-      <div class="card" style="cursor:pointer" onclick="goTo('c-res-space')">
-        <div class="card-img">Villa photo</div>
-        <div class="h4">Villas</div>
-        <div style="font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--campus);margin-bottom:8px">Duplex &amp; Triplex · One Story</div>
-        <div class="body" style="font-size:12px;margin-bottom:10px">Spacious one-story villas with fully equipped kitchen, two bedrooms, walk-in closet, two bathrooms, and at least a one-car garage. Options include fireplace, sunroom, and two-car garage.</div>
-        <div style="font-size:11px;color:var(--muted);margin-bottom:12px">Floor plans: Meadowland A &amp; B · Wheatland B · Larkspur A &amp; B</div>
-        <span class="lnk campus">View floor plans →</span>
-      </div>
-      <div class="card" style="cursor:pointer" onclick="goTo('c-res-space')">
-        <div class="card-img">Cottage photo</div>
-        <div class="h4">Cottages</div>
-        <div style="font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--campus);margin-bottom:8px">Open Concept · Recently Renovated</div>
-        <div class="body" style="font-size:12px;margin-bottom:10px">Quaint and comfortable with an open kitchen and dining layout, maple finished cabinets, front and back flower beds, and your own parking space. All appliances included.</div>
-        <div style="font-size:11px;color:var(--muted);margin-bottom:12px">Floor plans: 1 Bed with Den · 2 Bed · 2 Bed with Den</div>
-        <span class="lnk campus">View floor plans →</span>
-      </div>
-      <div class="card" style="cursor:pointer" onclick="goTo('c-res-space')">
-        <div class="card-img">Apartment photo</div>
-        <div class="h4">Apartments</div>
-        <div style="font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--campus);margin-bottom:8px">Community Center · Steps from Everything</div>
-        <div class="body" style="font-size:12px;margin-bottom:10px">Located in the heart of campus, apartments put you steps from the pool, fitness center, dining room, and activities. Patios on the first floor, balconies on the second. Handicap accessible.</div>
-        <div style="font-size:11px;color:var(--muted);margin-bottom:12px">Floor plans: 1 Bed with Den · 2 Bed · 2 Bed with Den</div>
-        <span class="lnk campus">View floor plans →</span>
-      </div>
+      <div class="card" style="cursor:pointer" onclick="goTo('c-res-space')"><div class="card-img">Villa photo</div><div class="h4">Villas</div><div style="font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--campus);margin-bottom:8px">Duplex &amp; Triplex · One Story</div><div class="body" style="font-size:12px;margin-bottom:10px">Spacious one-story villas with fully equipped kitchen, two bedrooms, walk-in closet, two bathrooms, and at least a one-car garage. Options include fireplace, sunroom, and two-car garage.</div><div style="font-size:11px;color:var(--muted);margin-bottom:12px">Floor plans: Meadowland A &amp; B · Wheatland B · Larkspur A &amp; B</div><span class="lnk campus">View floor plans →</span></div>
+      <div class="card" style="cursor:pointer" onclick="goTo('c-res-space')"><div class="card-img">Cottage photo</div><div class="h4">Cottages</div><div style="font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--campus);margin-bottom:8px">Open Concept · Recently Renovated</div><div class="body" style="font-size:12px;margin-bottom:10px">Quaint and comfortable with an open kitchen and dining layout, maple finished cabinets, front and back flower beds, and your own parking space. All appliances included.</div><div style="font-size:11px;color:var(--muted);margin-bottom:12px">Floor plans: 1 Bed with Den · 2 Bed · 2 Bed with Den</div><span class="lnk campus">View floor plans →</span></div>
+      <div class="card" style="cursor:pointer" onclick="goTo('c-res-space')"><div class="card-img">Apartment photo</div><div class="h4">Apartments</div><div style="font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--campus);margin-bottom:8px">Community Center · Steps from Everything</div><div class="body" style="font-size:12px;margin-bottom:10px">Located in the heart of campus, apartments put you steps from the pool, fitness center, dining room, and activities. Patios on the first floor, balconies on the second. Handicap accessible.</div><div style="font-size:11px;color:var(--muted);margin-bottom:12px">Floor plans: 1 Bed with Den · 2 Bed · 2 Bed with Den</div><span class="lnk campus">View floor plans →</span></div>
     </div>
   </div></div>
-
-  <div class="section gray"><div class="sw" style="text-align:center">
-    <div class="cta-band">
-      <div class="h2" style="margin-bottom:7px">Ready to find your place at Plum Creek?</div>
-      <div class="body" style="text-align:center;margin:0 auto 18px;max-width:480px">Come see it for yourself — our team would love to show you around and answer any questions you have.</div>
-      <button class="btn-campus" onclick="goTo('c-get-started')" style="margin-right:8px">Schedule a Visit</button>
-      <button class="btn-campus-outline" onclick="goTo('c-get-started')">Request Information</button>
-    </div>
-  </div></div>
+  <div class="section gray"><div class="sw" style="text-align:center"><div class="cta-band"><div class="h2" style="margin-bottom:7px">Ready to find your place at Plum Creek?</div><div class="body" style="text-align:center;margin:0 auto 18px;max-width:480px">Come see it for yourself — our team would love to show you around and answer any questions you have.</div><button class="btn-campus" onclick="goTo('c-get-started')" style="margin-right:8px">Schedule a Visit</button><button class="btn-campus-outline" onclick="goTo('c-get-started')">Request Information</button></div></div></div>
 </div>
 
-<!-- C: RES SPACE -->
+<!-- C-RES-SPACE -->
 <div class="page" id="page-c-res-space">
   <div class="breadcrumb"><span onclick="goTo('c-home')" style="cursor:pointer">Home</span><span class="sep">›</span><span onclick="goTo('c-residential')" style="cursor:pointer">Residential Living</span><span class="sep">›</span><span class="cur">Villas</span></div>
   <div class="section white"><div class="sw"><div class="split"><div><div class="descriptor campus">Residential Living Villas</div><div class="h1">Spacious, elegant, and truly yours</div><div class="body" style="margin-bottom:14px">Attached garages, private outdoor spaces, and professionally designed interiors. Choose from multiple floor plans.</div><div><button class="btn-campus" style="margin-right:8px" onclick="goTo('c-get-started')">Apply for This Residency</button><button class="btn-campus-outline">Virtual Tour</button></div></div><div class="img-ph" style="height:260px">Villa hero photo</div></div></div></div>
@@ -689,25 +918,45 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
   <div class="section white"><div class="sw"><div class="cta-band"><div class="h3" style="margin-bottom:7px">Ready to apply for this residency?</div><button class="btn-campus" style="margin-right:8px">Apply for This Residency</button><button class="btn-campus-outline" onclick="goTo('c-get-started')">Schedule a Visit First</button></div></div></div>
 </div>
 
-<!-- C: PERSONAL CARE -->
+<!-- C-PERSONAL-CARE -->
 <div class="page" id="page-c-personal-care">
   <div class="breadcrumb"><span onclick="goTo('c-home')" style="cursor:pointer">Home</span><span class="sep">›</span><span class="cur">Personal Care</span></div>
-  <div class="hero-split" style="max-width:1600px;margin:0 auto"><div class="hero-copy"><div class="descriptor campus">Personal Care</div><div class="h1">The support you need, the independence you love</div><div class="body" style="margin-bottom:18px">Licensed Personal Care with personalized support — in a warm, welcoming environment where you are known and valued.</div><button class="btn-campus" onclick="goTo('c-get-started')" style="margin-right:8px">Schedule a Visit</button><button class="btn-campus-outline" onclick="goTo('c-get-started')">Request Information</button></div><div class="hero-img-ph" style="background:#c4b0bb;min-height:360px">Personal care photo</div></div>
-  <div class="section white"><div class="sw"><div class="descriptor campus">Accommodation Options</div><div class="h2" style="margin-bottom:18px">Choose the space that fits your needs</div><div class="split-3"><div class="card"><div class="card-img">Terrace photo</div><div class="h4">Terrace Living</div><div class="body" style="font-size:12px;margin-bottom:8px">Furnished studio with private bath. Casual, supportive lifestyle.</div><span class="lnk campus">Virtual tour →</span></div><div class="card"><div class="card-img">Creekside photo</div><div class="h4">Creekside Suites</div><div class="body" style="font-size:12px;margin-bottom:8px">Kitchenette, living room, walk-in closet, private bath.</div><span class="lnk campus">Virtual tour →</span></div><div class="card"><div class="card-img">Memory Lane photo</div><div class="h4">Memory Lane</div><div class="body" style="font-size:12px;margin-bottom:8px">Secure specialized care for Alzheimer's and dementia. Outdoor courtyard.</div><span class="lnk campus">Learn more →</span></div></div></div></div>
-  <div class="section gray"><div class="sw"><div class="descriptor campus">Common Questions</div><div class="h2" style="margin-bottom:16px">Personal Care FAQs</div><div class="acc-item"><span class="acc-q">What is the difference between personal care and assisted living?</span><div class="acc-chv">▾</div></div><div class="acc-open">Personal care provides support with daily activities such as bathing, dressing, and medication management for those who need help but not 24/7 skilled nursing care.</div><div class="acc-item"><span class="acc-q">Is respite care available for short-term stays?</span><div class="acc-chv">▾</div></div><div class="acc-item"><span class="acc-q">What happens if my care needs increase over time?</span><div class="acc-chv">▾</div></div></div></div>
-  <div class="section white"><div class="sw" style="text-align:center"><div class="cta-band"><div class="h2" style="margin-bottom:7px">Let's talk about your care needs</div><button class="btn-campus" onclick="goTo('c-get-started')" style="margin-right:8px">Schedule a Visit</button><button class="btn-campus-outline" onclick="goTo('c-get-started')">Request Information</button></div></div></div>
+  <div class="hero-centered"><div class="hero-centered-inner">
+    <div class="descriptor campus">Personal Care</div>
+    <div class="h1">The assistance you need for a lifestyle you'll love</div>
+    <div class="body" style="text-align:center;margin:0 auto 18px;max-width:560px">Our personal care program provides licensed caregivers to identify your care needs, 24 hours a day, seven days a week.</div>
+    <button class="btn-campus" style="margin-right:8px" onclick="goTo('c-get-started')">Schedule a Visit</button>
+    <button class="btn-campus-outline" onclick="goTo('c-get-started')">Request Information</button>
+  </div></div>
+  <div class="section white"><div class="sw"><div class="split"><div><div class="descriptor campus">Lifestyle Overview</div><div class="h2">Support that fits your life</div><div class="body wide" style="margin-bottom:12px">Personal Care at Plum Creek is designed for those who value their independence but benefit from a helping hand. Whether you need assistance with daily activities, medication management, or simply want the reassurance of licensed staff nearby around the clock — our team is here for you.</div><div class="body wide">You'll have access to the same vibrant campus amenities as residential living residents, with the added comfort of knowing personalized support is always available.</div></div><div class="img-ph" style="height:300px">Personal care lifestyle photo</div></div></div></div>
+  <div class="section gray"><div class="sw"><div class="descriptor campus">Who This Is For</div><div class="h2" style="margin-bottom:20px">Is Personal Care right for you or your loved one?</div><div class="split-3"><div class="card campus-tint" style="padding:24px"><div style="font-size:22px;margin-bottom:8px">🧓</div><div class="h4" style="margin-bottom:6px">Needing daily support</div><div class="body">You're active and engaged but need assistance with bathing, dressing, medication, or meals — and want that help delivered with dignity.</div></div><div class="card campus-tint" style="padding:24px"><div style="font-size:22px;margin-bottom:8px">👨‍👩‍👧</div><div class="h4" style="margin-bottom:6px">Family seeking peace of mind</div><div class="body">Your loved one needs more support than you can provide at home, and you want to know they're safe, cared for, and thriving around the clock.</div></div><div class="card campus-tint" style="padding:24px"><div style="font-size:22px;margin-bottom:8px">🔄</div><div class="h4" style="margin-bottom:6px">Transitioning between care levels</div><div class="body">You've recently left skilled nursing or rehab and need a supportive environment while you regain strength and independence.</div></div></div></div></div>
+  <div class="section white"><div class="sw"><div class="descriptor campus">Accommodation Types</div><div class="h2" style="margin-bottom:6px">Choose the space that fits your needs</div><div class="body wide" style="margin-bottom:24px">Three distinct living options, each designed around a different level of support and lifestyle preference.</div><div class="split-3"><div class="card"><div class="card-img">Terrace Living photo</div><div class="h4">Terrace Living</div><div style="font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--campus);margin-bottom:8px">Furnished Studio · Private Bath</div><div class="body" style="font-size:12px;margin-bottom:12px">An easy-going, casual lifestyle in a furnished studio with private bath and shower. Ideal if you appreciate independence with support available whenever you need it.</div><span class="lnk campus">Virtual tour →</span></div><div class="card"><div class="card-img">Creekside photo</div><div class="h4">Creekside Suites</div><div style="font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--campus);margin-bottom:8px">Kitchenette · Walk-In Closet · Private Bath</div><div class="body" style="font-size:12px;margin-bottom:12px">A style of its own — with a kitchenette (microwave and mini fridge), living room, bedroom with walk-in closet, and a private bath and shower.</div><span class="lnk campus">Virtual tour →</span></div><div class="card"><div class="card-img">Memory Lane photo</div><div class="h4">Memory Lane</div><div style="font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--campus);margin-bottom:8px">Specialized Memory Care · Secure Environment</div><div class="body" style="font-size:12px;margin-bottom:12px">A safe, secure, and stable environment for those with Alzheimer's, dementia, and memory loss. All-inclusive private suites, family-style kitchen and dining, living room with fireplace, and a secure outdoor courtyard.</div><span class="lnk campus">Learn more →</span></div></div><div class="card" style="margin-top:16px;background:var(--campus-light);border-color:rgba(122,48,80,.15)"><div class="h4" style="margin-bottom:6px">Respite Care</div><div class="body wide">Temporary relief for primary caregivers who need short-term support, or for individuals not yet able to transition home after skilled rehabilitation. Available in personal care or skilled nursing settings.</div></div></div></div>
+  <div class="section gray"><div class="sw"><div class="descriptor campus">What's Included</div><div class="h2" style="margin-bottom:6px">Services included in your daily rate</div><div class="body wide" style="margin-bottom:20px">The following services are included as part of your personal care plan.</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:40px"><div><div style="font-size:11px;font-weight:600;color:var(--campus);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px">Included in Daily Rate</div><div class="chk-item"><span style="color:var(--campus);margin-right:6px">✓</span> Licensed staff, 24 hours/day, 7 days/week</div><div class="chk-item"><span style="color:var(--campus);margin-right:6px">✓</span> Medication administration</div><div class="chk-item"><span style="color:var(--campus);margin-right:6px">✓</span> Assistance with activities of daily living</div><div class="chk-item"><span style="color:var(--campus);margin-right:6px">✓</span> Three choice meals daily in the dining room</div><div class="chk-item"><span style="color:var(--campus);margin-right:6px">✓</span> Daily therapeutic recreation &amp; activities program</div><div class="chk-item"><span style="color:var(--campus);margin-right:6px">✓</span> Access to Wellness Center, gym &amp; heated indoor pool</div><div class="chk-item"><span style="color:var(--campus);margin-right:6px">✓</span> Housekeeping &amp; trash removal</div><div class="chk-item"><span style="color:var(--campus);margin-right:6px">✓</span> Weekly laundry services</div><div class="chk-item"><span style="color:var(--campus);margin-right:6px">✓</span> Maintenance services</div><div class="chk-item"><span style="color:var(--campus);margin-right:6px">✓</span> Pastoral care</div><div class="chk-item" style="border:none"><span style="color:var(--campus);margin-right:6px">✓</span> Mail delivery</div></div><div><div style="font-size:11px;font-weight:600;color:var(--campus);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px">Available for Additional Fee</div><div class="chk-item"><span style="color:var(--muted);margin-right:6px">+</span> Beauty salon / barber shop</div><div class="chk-item"><span style="color:var(--muted);margin-right:6px">+</span> Transportation</div><div class="chk-item"><span style="color:var(--muted);margin-right:6px">+</span> Cable television</div><div class="chk-item"><span style="color:var(--muted);margin-right:6px">+</span> Telephone</div><div class="chk-item"><span style="color:var(--muted);margin-right:6px">+</span> Supplies</div><div class="chk-item"><span style="color:var(--muted);margin-right:6px">+</span> Meal delivery</div><div class="chk-item"><span style="color:var(--muted);margin-right:6px">+</span> Pet care</div><div class="chk-item"><span style="color:var(--muted);margin-right:6px">+</span> Dry cleaning services</div><div class="chk-item" style="border:none"><span style="color:var(--muted);margin-right:6px">+</span> Home care — Physical, Occupational &amp; Speech Therapies</div></div></div></div></div>
+  <div class="section white"><div class="sw"><div class="split"><div class="img-ph" style="height:280px">Care approach photo</div><div><div class="descriptor campus">Our Approach</div><div class="h2">Care that honors the whole person</div><div class="body wide" style="margin-bottom:12px">Our licensed caregivers take the time to understand each resident's unique needs, preferences, and goals. Care plans are developed individually and revisited as needs evolve.</div><div class="body wide">We believe personal care should feel personal. Our team is here not just to assist, but to build genuine relationships with every resident in our community.</div></div></div></div></div>
+  <div class="section gray"><div class="sw"><div class="descriptor campus">Common Questions</div><div class="h2" style="margin-bottom:18px">Personal Care FAQs</div><div class="acc-item"><span class="acc-q">What is the difference between personal care and assisted living?</span><div class="acc-chv">▾</div></div><div class="acc-open">Personal care provides licensed support for daily activities such as bathing, dressing, and medication management. In Pennsylvania, personal care homes are licensed differently from assisted living facilities.</div><div class="acc-item"><span class="acc-q">Is respite care available for short-term stays?</span><div class="acc-chv">▾</div></div><div class="acc-open">Yes — respite care is available in both personal care and skilled nursing settings, providing temporary relief for primary caregivers or a bridge for those transitioning home from rehab.</div><div class="acc-item"><span class="acc-q">What happens if my care needs increase over time?</span><div class="acc-chv">▾</div></div><div class="acc-open">If your needs increase, our team will work with you and your family to transition smoothly to a higher level of care — without having to leave the community you call home.</div><div class="acc-item"><span class="acc-q">Can family members be involved in care planning?</span><div class="acc-chv">▾</div></div></div></div>
+  <div class="section white"><div class="sw" style="text-align:center"><div class="cta-band"><div class="h2" style="margin-bottom:7px">Let's talk about your care needs</div><div class="body" style="text-align:center;margin:0 auto 18px;max-width:480px">Our admissions team is here to answer your questions and help you find the right fit.</div><button class="btn-campus" onclick="goTo('c-get-started')" style="margin-right:8px">Schedule a Visit</button><button class="btn-campus-outline" onclick="goTo('c-get-started')">Request Information</button></div></div></div>
 </div>
 
-<!-- C: HEALTHCARE -->
+<!-- C-HEALTHCARE -->
 <div class="page" id="page-c-healthcare">
   <div class="breadcrumb"><span onclick="goTo('c-home')" style="cursor:pointer">Home</span><span class="sep">›</span><span class="cur">Healthcare</span></div>
-  <div class="hero-centered"><div class="hero-centered-inner"><div class="descriptor campus">Healthcare at Plum Creek</div><div class="h1">Expert care when it matters most</div><div class="body" style="text-align:center;margin:0 auto">The Sandra L. Fair Healthcare Center — Medicaid-approved, 24-hour skilled nursing, short-term rehab, memory care, and respite services.</div></div></div>
-  <div class="section white"><div class="sw"><div class="split"><div><div class="descriptor campus">Our Healthcare Center</div><div class="h2">Compassionate, 24-hour skilled care</div><div class="body">Our 60-bed skilled nursing facility provides 24-hour care. Our qualified, caring team focuses on the Homewood mission to provide quality care to all residents — whether for short-term rehab or long-term care.</div></div><div class="img-ph" style="height:240px">Healthcare center photo</div></div></div></div>
-  <div class="section gray"><div class="sw"><div class="descriptor campus" style="text-align:center">Care Services</div><div class="h2" style="text-align:center;margin-bottom:20px">The care you need, under one roof</div><div class="split-2"><div class="card"><div style="font-size:20px;margin-bottom:7px">🏥</div><div class="h4">Skilled Nursing</div><div class="body" style="margin-bottom:8px">24-hour nursing care for complex medical needs. Medicaid and Medicare approved.</div><span class="lnk campus">Learn more →</span></div><div class="card"><div style="font-size:20px;margin-bottom:7px">🧠</div><div class="h4">Memory Care</div><div class="body" style="margin-bottom:8px">Specialized care for Alzheimer's and dementia. Therapeutic programs, secured outdoor garden.</div><span class="lnk campus">Learn more →</span></div><div class="card"><div style="font-size:20px;margin-bottom:7px">🏃</div><div class="h4">Short-Term Rehab</div><div class="body" style="margin-bottom:8px">Plum Court Rehab — Medicare-approved PT, OT, and speech therapy.</div><span class="lnk campus">Learn more →</span></div><div class="card"><div style="font-size:20px;margin-bottom:7px">🤝</div><div class="h4">Respite Care</div><div class="body" style="margin-bottom:8px">Temporary care in personal care or skilled nursing settings.</div><span class="lnk campus">Learn more →</span></div></div></div></div>
-  <div class="section white"><div class="sw" style="text-align:center"><div class="cta-band"><div class="h2" style="margin-bottom:7px">Ready to learn more?</div><button class="btn-campus" onclick="goTo('c-get-started')" style="margin-right:8px">Schedule a Visit</button><button class="btn-campus-outline" onclick="goTo('c-get-started')">Request Information</button></div></div></div>
+  <div class="hero-centered"><div class="hero-centered-inner">
+    <div class="descriptor campus">Healthcare at Plum Creek</div>
+    <div class="h1">Expert care when it matters most</div>
+    <div class="body" style="text-align:center;margin:0 auto 18px;max-width:560px">The Sandra L. Fair Healthcare Center provides residents with focused and extensive care based on their individual needs. Medicaid approved, our skilled nursing facility provides 24-hour care.</div>
+    <button class="btn-campus" style="margin-right:8px" onclick="goTo('c-get-started')">Schedule a Visit</button>
+    <button class="btn-campus-outline" onclick="goTo('c-get-started')">Request Information</button>
+  </div></div>
+  <div class="section white"><div class="sw"><div class="split"><div><div class="descriptor campus">The Sandra L. Fair Healthcare Center</div><div class="h2">Compassionate, skilled care on campus</div><div class="body wide" style="margin-bottom:12px">Our healthcare center offers a full continuum of care — from short-term rehabilitation to long-term skilled nursing, memory care, respite, and hospice support. Everything is available right here on the Plum Creek campus.</div><div class="body wide">Our qualified and caring team focuses on Homewood Living's mission — providing quality, dignified care to every resident, while supporting families every step of the way.</div></div><div class="img-ph" style="height:300px">Healthcare center photo</div></div></div></div>
+  <div class="section gray"><div class="sw"><div class="descriptor campus">Who This Is For</div><div class="h2" style="margin-bottom:20px">Is our healthcare center right for your situation?</div><div class="split-3"><div class="card campus-tint" style="padding:24px"><div style="font-size:22px;margin-bottom:8px">🏥</div><div class="h4" style="margin-bottom:6px">Recovering from surgery or illness</div><div class="body">You've recently had a stroke, knee replacement, or other procedure and need focused short-term rehab before returning home.</div></div><div class="card campus-tint" style="padding:24px"><div style="font-size:22px;margin-bottom:8px">🧠</div><div class="h4" style="margin-bottom:6px">Living with memory loss</div><div class="body">Your loved one has Alzheimer's or dementia and needs a safe, structured environment with care specifically tailored to their cognitive needs.</div></div><div class="card campus-tint" style="padding:24px"><div style="font-size:22px;margin-bottom:8px">🤝</div><div class="h4" style="margin-bottom:6px">Needing long-term skilled care</div><div class="body">Complex medical needs require 24-hour nursing care, and you want that care delivered in a warm, community-oriented environment.</div></div></div></div></div>
+  <div class="section white"><div class="sw"><div class="descriptor campus" style="text-align:center">Care Services</div><div class="h2" style="text-align:center;margin-bottom:6px">Everything under one roof</div><div class="body" style="text-align:center;margin:0 auto 28px;max-width:520px">Our healthcare center provides a full range of services so the right level of care is always available.</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:20px"><div class="card"><div style="font-size:22px;margin-bottom:8px">🏥</div><div class="h4">Skilled Nursing — Care Central</div><div style="font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--campus);margin-bottom:8px">60-Bed · 24-Hour · Medicaid &amp; Medicare Approved</div><div class="body wide">Our 60-bed skilled nursing unit assists with daily living activities, housekeeping, laundry, meals, pastoral care, and individualized activities designed to stimulate motor functioning and cognitive exercise.</div></div><div class="card"><div style="font-size:22px;margin-bottom:8px">🧠</div><div class="h4">Memory Care — Care South</div><div style="font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--campus);margin-bottom:8px">60-Bed Secure Unit · Alzheimer's &amp; Dementia Focused</div><div class="body wide">Care South offers a safe, secure environment with activities specifically designed for those with neurocognitive disabilities. Each resident receives individualized care, while families receive ongoing support and education.</div></div><div class="card"><div style="font-size:22px;margin-bottom:8px">🏃</div><div class="h4">Short-Term Rehab — Plum Court</div><div style="font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--campus);margin-bottom:8px">Medicare Approved · Open to Residents &amp; Non-Residents</div><div class="body wide" style="margin-bottom:8px">Established in 2017, Plum Court Rehab is a dedicated wing focused on getting you back on your feet. Our therapy group Functional Pathways provides PT, OT, and Speech-Pathology therapy using innovative RightTrack™ software.</div><span class="lnk campus">Learn about Functional Pathways →</span></div><div class="card"><div style="font-size:22px;margin-bottom:8px">🤝</div><div class="h4">Respite Care</div><div style="font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--campus);margin-bottom:8px">Personal Care &amp; Skilled Nursing Settings</div><div class="body wide">Temporary support services for families who need relief. Families can rest assured knowing their loved one is in a compassionate, caring environment.</div></div><div class="card" style="grid-column:1/-1"><div style="font-size:22px;margin-bottom:8px">🕊️</div><div class="h4">Hospice Care</div><div style="font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--campus);margin-bottom:8px">In Partnership with Local Hospice Centers</div><div class="body wide">Plum Creek works with several local hospice centers to provide families with compassionate, caring, and supportive services. Our team is here for both residents and families.</div></div></div></div></div>
+  <div class="section gray"><div class="sw"><div class="descriptor campus">What's Included</div><div class="h2" style="margin-bottom:6px">Services provided through our healthcare center</div><div class="body wide" style="margin-bottom:20px">Skilled nursing residents receive comprehensive support as part of their care.</div><div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0"><div class="chk-item"><span style="color:var(--campus);margin-right:6px">✓</span> 24-hour skilled nursing care</div><div class="chk-item"><span style="color:var(--campus);margin-right:6px">✓</span> Assistance with daily living activities</div><div class="chk-item"><span style="color:var(--campus);margin-right:6px">✓</span> Housekeeping &amp; laundry</div><div class="chk-item"><span style="color:var(--campus);margin-right:6px">✓</span> Three meals daily</div><div class="chk-item"><span style="color:var(--campus);margin-right:6px">✓</span> Pastoral care</div><div class="chk-item"><span style="color:var(--campus);margin-right:6px">✓</span> Individualized activities program</div><div class="chk-item"><span style="color:var(--campus);margin-right:6px">✓</span> PT, OT &amp; Speech therapy (rehab)</div><div class="chk-item"><span style="color:var(--campus);margin-right:6px">✓</span> Medicaid &amp; Medicare approved</div><div class="chk-item"><span style="color:var(--campus);margin-right:6px">✓</span> Family support &amp; education</div><div class="chk-item"><span style="color:var(--campus);margin-right:6px">✓</span> Hospice partnerships available</div><div class="chk-item"><span style="color:var(--campus);margin-right:6px">✓</span> Respite care options</div></div></div></div>
+  <div class="section white"><div class="sw"><div class="split"><div><div class="descriptor campus">Our Approach</div><div class="h2">Focused on you — not just your condition</div><div class="body wide" style="margin-bottom:12px">Every resident in our healthcare center receives a care plan tailored to their individual needs. Our team focuses on the whole person — providing supportive and restorative care for emotional, physical, and social wellbeing.</div><div class="body wide">Whether you're here for a short-term rehabilitation stay or for long-term care, what matters most is getting you back to the life you love — or helping you live each day with comfort, dignity, and connection.</div></div><div class="img-ph" style="height:280px">Care team photo</div></div></div></div>
+  <div class="section gray"><div class="sw"><div class="descriptor campus">Common Questions</div><div class="h2" style="margin-bottom:18px">Healthcare FAQs</div><div class="acc-item"><span class="acc-q">Is Plum Court Rehab available to non-residents?</span><div class="acc-chv">▾</div></div><div class="acc-open">Yes — Plum Court Rehab is available to anyone recovering from a recent hospital stay, whether or not they are a Plum Creek resident. It is Medicare approved and open to the broader community.</div><div class="acc-item"><span class="acc-q">What is the difference between skilled nursing and personal care?</span><div class="acc-chv">▾</div></div><div class="acc-open">Skilled nursing provides 24-hour medical care for those with complex clinical needs. Personal care provides non-medical assistance with daily living for those who need support but not round-the-clock nursing.</div><div class="acc-item"><span class="acc-q">Does Plum Creek accept Medicaid?</span><div class="acc-chv">▾</div></div><div class="acc-open">Yes. The Sandra L. Fair Healthcare Center is Medicaid approved. Our admissions team can walk you through the financial and eligibility details.</div><div class="acc-item"><span class="acc-q">Can a resident transition between care levels on campus?</span><div class="acc-chv">▾</div></div><div class="acc-item"><span class="acc-q">What hospice services are available?</span><div class="acc-chv">▾</div></div></div></div>
+  <div class="section white"><div class="sw" style="text-align:center"><div class="cta-band"><div class="h2" style="margin-bottom:7px">Ready to learn more?</div><div class="body" style="text-align:center;margin:0 auto 18px;max-width:480px">Our team is here to answer your questions and help you find the right level of care.</div><button class="btn-campus" onclick="goTo('c-get-started')" style="margin-right:8px">Schedule a Visit</button><button class="btn-campus-outline" onclick="goTo('c-get-started')">Request Information</button></div></div></div>
 </div>
 
-<!-- C: ABOUT -->
+<!-- C-ABOUT -->
 <div class="page" id="page-c-about">
   <div class="breadcrumb"><span onclick="goTo('c-home')" style="cursor:pointer">Home</span><span class="sep">›</span><span class="cur">About Plum Creek</span></div>
   <div class="hero-centered"><div class="hero-centered-inner"><div class="descriptor campus">About Us</div><div class="h1">A community where you are family</div><div class="body" style="text-align:center;margin:0 auto">Homewood Living Plum Creek has been serving the Hanover community since 1957, on over 100 beautifully developed acres.</div></div></div>
@@ -717,7 +966,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
   <div class="section gray"><div class="sw"><div class="cta-row"><div><div class="h4" onclick="goTo('c-team')" style="cursor:pointer">Meet Our Team</div><div class="body">Get to know the people who make Plum Creek home.</div></div><span class="lnk campus" onclick="goTo('c-team')">Meet the team →</span></div><div class="cta-row" style="margin-bottom:0"><div><div class="h4">Schedule a Visit</div><div class="body">See Plum Creek for yourself — book a personal tour today.</div></div><span class="lnk campus" onclick="goTo('c-get-started')">Get Started →</span></div></div></div>
 </div>
 
-<!-- C: TEAM -->
+<!-- C-TEAM -->
 <div class="page" id="page-c-team">
   <div class="breadcrumb"><span onclick="goTo('c-home')" style="cursor:pointer">Home</span><span class="sep">›</span><span onclick="goTo('c-about')" style="cursor:pointer">About</span><span class="sep">›</span><span class="cur">Meet Our Team</span></div>
   <div class="hero-centered"><div class="hero-centered-inner"><div class="descriptor campus">Our People</div><div class="h1">The heart of Plum Creek: our team</div></div></div>
@@ -725,35 +974,35 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
   <div class="section gray"><div class="sw"><div class="split-2"><div class="cta-band"><div class="h3" style="margin-bottom:7px">Want to join our team?</div><button class="btn-campus" onclick="goTo('c-join-team')">View Career Opportunities →</button></div><div class="cta-band"><div class="h3" style="margin-bottom:7px">Meet our team in person</div><button class="btn-campus-outline" onclick="goTo('c-get-started')">Schedule a Tour →</button></div></div></div></div>
 </div>
 
-<!-- C: EVENTS -->
+<!-- C-EVENTS -->
 <div class="page" id="page-c-events">
   <div class="breadcrumb"><span onclick="goTo('c-home')" style="cursor:pointer">Home</span><span class="sep">›</span><span class="cur">Events</span></div>
-  <div class="section campus-tint"><div class="sw" style="text-align:center"><div class="descriptor campus">Events</div><div class="h1" style="text-align:center;margin-bottom:14px">What's happening at Plum Creek</div><div class="filter-row" style="justify-content:center"><span class="pill active">All Events</span><span class="pill">Open Houses</span><span class="pill">Community</span><span class="pill">Activities</span></div></div></div>
+  <div class="section campus-tint"><div class="sw" style="text-align:center"><div class="descriptor campus">Events</div><div class="h1" style="margin-bottom:14px">What's happening at Plum Creek</div><div class="filter-row" style="justify-content:center"><span class="pill active">All Events</span><span class="pill">Open Houses</span><span class="pill">Community</span><span class="pill">Activities</span></div></div></div>
   <div class="section white"><div class="sw"><div class="split-3"><div class="card" onclick="goTo('c-event-single')" style="cursor:pointer"><div class="meta-tag" style="margin-bottom:5px">April 5 · Omni Auditorium</div><div class="h4">Spring Concert — Joyful Singers</div><div class="body" style="font-size:12px;margin-bottom:8px">Annual spring concert open to residents and families.</div><span class="lnk campus">Details →</span></div><div class="card" onclick="goTo('c-event-single')" style="cursor:pointer"><div class="meta-tag" style="margin-bottom:5px">April 12 · Welcome Center</div><div class="h4">Family Open House</div><div class="body" style="font-size:12px;margin-bottom:8px">Tour the campus, meet the team, no obligation.</div><span class="lnk campus">Register →</span></div><div class="card" onclick="goTo('c-event-single')" style="cursor:pointer"><div class="meta-tag" style="margin-bottom:5px">May 3 · Lancaster, PA</div><div class="h4">Sight &amp; Sound Theatre Trip</div><div class="body" style="font-size:12px;margin-bottom:8px">Monthly group trip. Bus departs 10am.</div><span class="lnk campus">Register →</span></div></div></div></div>
 </div>
 
-<!-- C: EVENT SINGLE -->
+<!-- C-EVENT-SINGLE -->
 <div class="page" id="page-c-event-single">
   <div class="breadcrumb"><span onclick="goTo('c-home')" style="cursor:pointer">Home</span><span class="sep">›</span><span onclick="goTo('c-events')" style="cursor:pointer">Events</span><span class="sep">›</span><span class="cur">Family Open House</span></div>
   <div class="hero-full" style="min-height:300px"><div class="hero-full-overlay"></div><div class="hero-full-copy"><div class="descriptor white">Open House · April 12, 2026 · 10AM–2PM</div><div class="h1" style="color:#fff">Family Open House at Plum Creek</div><div class="body white">Tour the campus, meet our team, and discover the Plum Creek difference.</div></div></div>
   <div class="section white"><div class="sw"><div class="split"><div><div class="descriptor campus">Event Details</div><div class="h2" style="margin-bottom:14px">Everything you need to know</div><div class="list-item"><div><div class="meta-tag">Date &amp; Time</div><div style="font-size:13px;font-weight:500">Saturday, April 12, 2026 · 10:00 AM – 2:00 PM</div></div></div><div class="list-item"><div><div class="meta-tag">Location</div><div style="font-size:13px;font-weight:500">1880 Westminster Ave, Hanover, PA 17331</div></div></div><div class="list-item" style="border:none"><div><div class="meta-tag">Cost</div><div style="font-size:13px;font-weight:500">Free — no obligation</div></div></div></div><div><div class="card" style="padding:24px"><div class="descriptor campus" style="margin-bottom:6px">Reserve Your Spot</div><div class="h3" style="margin-bottom:14px">Register for the Open House</div><div class="form-row"><div><label class="form-label">First Name</label><input class="form-input" placeholder="First name"></div><div><label class="form-label">Last Name</label><input class="form-input" placeholder="Last name"></div></div><div style="margin-bottom:12px"><label class="form-label">Email</label><input class="form-input" placeholder="your@email.com" style="width:100%"></div><div style="margin-bottom:14px"><label class="form-label">I am attending as</label><select class="form-select"><option>A prospective resident</option><option>A family member</option><option>A healthcare professional</option></select></div><button class="btn-campus" style="width:100%">Register Now →</button></div></div></div></div></div>
 </div>
 
-<!-- C: NEWS -->
+<!-- C-NEWS -->
 <div class="page" id="page-c-news">
   <div class="breadcrumb"><span onclick="goTo('c-home')" style="cursor:pointer">Home</span><span class="sep">›</span><span class="cur">News</span></div>
-  <div class="section campus-tint"><div class="sw" style="text-align:center"><div class="descriptor campus">News</div><div class="h1" style="text-align:center;margin-bottom:14px">What's happening at Plum Creek</div><div class="filter-row" style="justify-content:center"><span class="pill active">All</span><span class="pill">Community</span><span class="pill">Healthcare</span><span class="pill">Foundation</span></div></div></div>
+  <div class="section campus-tint"><div class="sw" style="text-align:center"><div class="descriptor campus">News</div><div class="h1" style="margin-bottom:14px">What's happening at Plum Creek</div><div class="filter-row" style="justify-content:center"><span class="pill active">All</span><span class="pill">Community</span><span class="pill">Healthcare</span><span class="pill">Foundation</span></div></div></div>
   <div class="section white"><div class="sw"><div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:20px"><div onclick="goTo('c-news-single')" style="cursor:pointer"><div class="card-img">Photo</div><div class="meta-tag">Community · Mar 2026</div><div class="h4" style="margin-bottom:5px">Spring Activities Calendar</div><span class="lnk campus">Read →</span></div><div onclick="goTo('c-news-single')" style="cursor:pointer"><div class="card-img">Photo</div><div class="meta-tag">Residents · Feb 2026</div><div class="h4" style="margin-bottom:5px">Resident Spotlight: 50 Years</div><span class="lnk campus">Read →</span></div><div onclick="goTo('c-news-single')" style="cursor:pointer"><div class="card-img">Photo</div><div class="meta-tag">Foundation · Jan 2026</div><div class="h4" style="margin-bottom:5px">Foundation Update Winter 2026</div><span class="lnk campus">Read →</span></div><div onclick="goTo('c-news-single')" style="cursor:pointer"><div class="card-img">Photo</div><div class="meta-tag">Healthcare · Dec 2025</div><div class="h4" style="margin-bottom:5px">Plum Court Recognized</div><span class="lnk campus">Read →</span></div></div></div></div>
 </div>
 
-<!-- C: NEWS SINGLE -->
+<!-- C-NEWS-SINGLE -->
 <div class="page" id="page-c-news-single">
   <div class="breadcrumb"><span onclick="goTo('c-home')" style="cursor:pointer">Home</span><span class="sep">›</span><span onclick="goTo('c-news')" style="cursor:pointer">News</span><span class="sep">›</span><span class="cur">Spring Activities Calendar</span></div>
-  <div style="display:grid;grid-template-columns:1fr 260px;min-height:500px;max-width:1600px;margin:0 auto"><div style="padding:48px 48px 48px 72px;border-right:1px solid var(--border)"><div class="meta-tag">Community · March 2026</div><div class="h1" style="margin-bottom:10px">Spring Activities Calendar Now Available</div><div class="img-ph" style="height:240px;margin-bottom:18px">Article image</div><div class="body wide" style="margin-bottom:12px">We're thrilled to share our Spring 2026 activities calendar! This season features musical performances, outdoor activities, day trips, fitness classes, and special events.</div></div><div style="padding:28px 20px;background:var(--light)"><div style="font-size:11px;font-weight:600;color:var(--campus);margin-bottom:10px">More from Plum Creek</div><div class="list-item" onclick="goTo('c-news-single')" style="cursor:pointer"><div><div class="meta-tag">Residents</div><div style="font-size:11px;font-weight:500">Resident Spotlight</div></div><span class="lnk campus">→</span></div><div class="list-item" onclick="goTo('c-news-single')" style="cursor:pointer"><div><div class="meta-tag">Foundation</div><div style="font-size:11px;font-weight:500">Winter Update</div></div><span class="lnk campus">→</span></div><div style="margin-top:12px"><span class="lnk campus" onclick="goTo('c-news')">View all →</span></div></div></div>
+  <div style="display:grid;grid-template-columns:1fr 260px;min-height:500px;max-width:1600px;margin:0 auto"><div style="padding:48px 48px 48px 72px;border-right:1px solid var(--border)"><div class="meta-tag">Community · March 2026</div><div class="h1" style="margin-bottom:10px">Spring Activities Calendar Now Available</div><div class="img-ph" style="height:240px;margin-bottom:18px">Article image</div><div class="body wide">We're thrilled to share our Spring 2026 activities calendar! This season features musical performances, outdoor activities, day trips, fitness classes, and special events.</div></div><div style="padding:28px 20px;background:var(--light)"><div style="font-size:11px;font-weight:600;color:var(--campus);margin-bottom:10px">More from Plum Creek</div><div class="list-item" onclick="goTo('c-news-single')" style="cursor:pointer"><div><div class="meta-tag">Residents</div><div style="font-size:11px;font-weight:500">Resident Spotlight</div></div><span class="lnk campus">→</span></div><div class="list-item" onclick="goTo('c-news-single')" style="cursor:pointer"><div><div class="meta-tag">Foundation</div><div style="font-size:11px;font-weight:500">Winter Update</div></div><span class="lnk campus">→</span></div><div style="margin-top:12px"><span class="lnk campus" onclick="goTo('c-news')">View all →</span></div></div></div>
   <div class="section campus-tint"><div class="sw" style="text-align:center"><div class="cta-band" style="background:var(--campus);color:#fff"><div class="h2" style="color:#fff;margin-bottom:7px">Interested in life at Plum Creek?</div><button class="btn-white" onclick="goTo('c-get-started')">Get Started →</button></div></div></div>
 </div>
 
-<!-- C: JOIN OUR TEAM -->
+<!-- C-JOIN-TEAM -->
 <div class="page" id="page-c-join-team">
   <div class="breadcrumb"><span onclick="goTo('c-home')" style="cursor:pointer">Home</span><span class="sep">›</span><span class="cur">Join Our Team</span></div>
   <div class="hero-split" style="max-width:1600px;margin:0 auto"><div class="hero-copy"><div class="descriptor campus">Careers at Plum Creek</div><div class="h1">Join the Plum Creek team</div><div class="body" style="margin-bottom:18px">Be part of a team where work is more than a job — it's a calling. Make a meaningful difference in the lives of the seniors we serve.</div><button class="btn-campus" style="margin-right:8px">View Current Openings</button><button class="btn-campus-outline">Our Culture</button></div><div class="hero-img-ph" style="background:#c4b0bb;min-height:360px">Careers hero</div></div>
@@ -761,7 +1010,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
   <div class="section gray"><div class="sw" style="text-align:center"><div class="cta-band" style="background:var(--campus);color:#fff"><div class="h2" style="color:#fff;margin-bottom:7px">Ready to apply?</div><button class="btn-white">View All Current Openings →</button></div></div></div>
 </div>
 
-<!-- C: GET STARTED -->
+<!-- C-GET-STARTED -->
 <div class="page" id="page-c-get-started">
   <div class="breadcrumb"><span onclick="goTo('c-home')" style="cursor:pointer">Home</span><span class="sep">›</span><span class="cur">Get Started</span></div>
   <div class="hero-centered"><div class="hero-centered-inner"><div class="descriptor campus">Get Started</div><div class="h1">Let's take the next step together</div><div class="body" style="text-align:center;margin:0 auto">No pressure, ever. Our admissions team will follow up within one business day.</div></div></div>
@@ -778,15 +1027,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
       <div style="font-size:11px;color:rgba(255,255,255,.5);font-style:italic;margin-bottom:12px">Ministries</div>
       <div class="footer-search"><input placeholder="Search..."><svg width="12" height="12" viewBox="0 0 12 12"><circle cx="5" cy="5" r="3.5" stroke="white" stroke-width="1.5" fill="none"/><line x1="8" y1="8" x2="10.5" y2="10.5" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div>
     </div>
-    <div><div class="footer-col-label">Locations</div>
-      <div class="footer-link" onclick="switchSite('child','c-home')">Williamsport, MD</div>
-      <div class="footer-link" onclick="switchSite('child','c-home')">Hanover, PA</div>
-      <div class="footer-link" onclick="switchSite('child','c-home')">Martinsburg, PA</div>
-      <div class="footer-link" onclick="switchSite('child','c-home')">Frederick, MD</div>
-      <div class="footer-link" onclick="switchSite('child','c-home')">Everett, PA</div>
-    </div>
-    <div><div class="footer-col-label">About</div><div class="footer-link" onclick="goTo('p-our-story')">Our Story</div><div class="footer-link" onclick="goTo('p-our-story')">Our Ministry</div><div class="footer-link" onclick="goTo('p-senior-living')">Understanding Senior Living</div><div class="footer-link" onclick="goTo('p-leadership')">Leadership</div><div class="footer-link" onclick="goTo('p-news')">News</div><div class="footer-link" onclick="goTo('p-careers')">Careers</div></div>
-    <div><div class="footer-col-label">The Foundation</div><div class="footer-link" onclick="goTo('p-foundation')">About the Foundation</div><div class="footer-link">Make a Gift</div><div class="footer-link">Ways to Give</div><div class="footer-link">Upcoming Events</div><div class="footer-link">Foundation FAQs</div><div class="footer-link">Foundation Resources</div></div>
+    <div><div class="footer-col-label">Locations</div><div class="footer-link" onclick="goTo('p-location-preview')">Williamsport, MD</div><div class="footer-link" onclick="goTo('p-location-preview')">Hanover, PA</div><div class="footer-link" onclick="goTo('p-location-preview')">Martinsburg, PA</div><div class="footer-link" onclick="goTo('p-location-preview')">Frederick, MD</div><div class="footer-link" onclick="goTo('p-location-preview')">Everett, PA</div></div>
+    <div><div class="footer-col-label">About</div><div class="footer-link" onclick="goTo('p-our-story')">Our Story</div><div class="footer-link" onclick="goTo('p-senior-living')">Understanding Senior Living</div><div class="footer-link" onclick="goTo('p-leadership')">Leadership</div><div class="footer-link" onclick="goTo('p-news')">News</div><div class="footer-link" onclick="goTo('p-careers')">Careers</div></div>
+    <div><div class="footer-col-label">The Foundation</div><div class="footer-link" onclick="goTo('p-foundation')">About the Foundation</div><div class="footer-link">Make a Gift</div><div class="footer-link">Ways to Give</div><div class="footer-link">Upcoming Events</div><div class="footer-link" onclick="goTo('p-foundation-faqs')">Foundation FAQs</div><div class="footer-link">Foundation Resources</div></div>
     <div><div class="footer-col-label">Connect</div><button class="footer-cta-btn filled" onclick="goTo('p-get-started')">Get Started</button><button class="footer-cta-btn" onclick="goTo('p-contact')">Get in Touch</button><div class="footer-col-label" style="margin-top:14px">Follow Us</div><div class="social-row"><div class="social-icon">f</div><div class="social-icon">in</div><div class="social-icon">▶</div></div></div>
   </div>
   <div class="footer-bottom"><div class="footer-bottom-links"><span style="cursor:pointer">Privacy</span><span style="cursor:pointer">Terms of Use</span><span style="cursor:pointer">Disclosure Statement</span><span style="cursor:pointer">HIPAA Notice of Privacy Practices</span></div><span>© Copyright 2026 Homewood Living Ministries</span></div>
@@ -801,11 +1044,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px"><svg viewBox="0 0 44 44" fill="none" width="32" height="32"><circle cx="22" cy="22" r="19" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/><line x1="22" y1="3" x2="22" y2="41" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/><line x1="3" y1="22" x2="41" y2="22" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/><circle cx="22" cy="22" r="4" fill="rgba(255,255,255,0.5)"/></svg><div><div style="font-size:13px;font-weight:700;color:#fff">Homewood Living</div><div style="font-size:12px;color:rgba(255,255,255,.5);font-style:italic">Plum Creek</div></div></div>
       <div class="campus-footer-link" onclick="switchSite('parent','p-home')">Homewood Ministry Home →</div>
     </div>
-    <div><div class="footer-col-label">Lifestyles</div><div class="campus-footer-link" onclick="goTo('c-residential')">Residential Living &amp; Spaces</div><div class="campus-footer-link" onclick="goTo('c-personal-care')">Personal Care</div><div class="campus-footer-link" onclick="goTo('c-healthcare')">Short-Term Rehabilitation</div><div class="campus-footer-link" onclick="goTo('c-healthcare')">Skilled Nursing</div></div>
+    <div><div class="footer-col-label">Lifestyles</div><div class="campus-footer-link" onclick="goTo('c-residential')">Residential Living</div><div class="campus-footer-link" onclick="goTo('c-personal-care')">Personal Care</div><div class="campus-footer-link" onclick="goTo('c-healthcare')">Short-Term Rehabilitation</div><div class="campus-footer-link" onclick="goTo('c-healthcare')">Skilled Nursing</div></div>
     <div><div class="footer-col-label">About</div><div class="campus-footer-link" onclick="goTo('c-about')">About Plum Creek</div><div class="campus-footer-link" onclick="goTo('c-team')">Meet Our Team</div><div class="campus-footer-link" onclick="goTo('c-events')">Upcoming Events</div><div class="campus-footer-link" onclick="goTo('c-news')">News</div><div class="campus-footer-link" onclick="goTo('c-join-team')">Careers</div><div class="campus-footer-link">Campus Map</div><hr class="campus-footer-divider"><div class="campus-footer-link" onclick="switchSite('parent','p-foundation')">The Foundation</div><div class="campus-footer-link">Brand Store</div></div>
     <div><button class="campus-cta" onclick="goTo('c-get-started')">Get Started</button><div class="footer-col-label">Follow Us</div><div class="social-row"><div class="campus-social-btn">f</div><div class="campus-social-btn">📷</div><div class="campus-social-btn">in</div></div></div>
   </div>
-  <div class="footer-bottom"><div class="footer-bottom-links"><span style="cursor:pointer">Privacy</span><span style="cursor:pointer">Terms of Use</span><span style="cursor:pointer">Disclosure Statement</span><span style="cursor:pointer">HIPPA Notice of Privacy Practices</span></div><span>© Copyright 2026 Homewood Living Plum Creek</span></div>
+  <div class="footer-bottom"><div class="footer-bottom-links"><span>Privacy</span><span>Terms of Use</span><span>Disclosure Statement</span><span>HIPAA Notice of Privacy Practices</span></div><span>© Copyright 2026 Homewood Living Plum Creek</span></div>
 </div>
 </div>
 
@@ -819,16 +1062,18 @@ const testimonials=[
 let tIdx=0;
 function renderTestimonial(){
   const t=testimonials[tIdx];
-  document.getElementById('testimonial-quote').textContent=t.quote;
-  document.getElementById('testimonial-name').textContent=t.name;
-  document.getElementById('testimonial-meta').textContent=t.meta;
-  const dots=document.getElementById('testimonial-dots');
-  dots.innerHTML=testimonials.map((_,i)=>`<div class="dot${i===tIdx?' on':''}" onclick="goToTestimonial(${i})" style="cursor:pointer"></div>`).join('');
+  const q=document.getElementById('testimonial-quote');
+  const n=document.getElementById('testimonial-name');
+  const m=document.getElementById('testimonial-meta');
+  const d=document.getElementById('testimonial-dots');
+  if(q) q.textContent=t.quote;
+  if(n) n.textContent=t.name;
+  if(m) m.textContent=t.meta;
+  if(d) d.innerHTML=testimonials.map((_,i)=>`<div class="dot${i===tIdx?' on':''}" onclick="goToTestimonial(${i})" style="cursor:pointer"></div>`).join('');
 }
 function moveTestimonial(dir){tIdx=(tIdx+dir+testimonials.length)%testimonials.length;renderTestimonial();}
 function goToTestimonial(i){tIdx=i;renderTestimonial();}
 renderTestimonial();
-
 function goTo(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   const pg=document.getElementById('page-'+id);
